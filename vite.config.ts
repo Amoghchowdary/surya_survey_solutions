@@ -1,7 +1,6 @@
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
-import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
 const siteBasePath = process.env.SITE_BASE_PATH || "/";
@@ -17,20 +16,16 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     tanstackStart({
-      srcDirectory: "src",
-      prerender: {
+      spa: {
         enabled: true,
-        autoStaticPathsDiscovery: true,
-        crawlLinks: true,
+        prerender: {
+          crawlLinks: true,
+        },
+      },
+      prerender: {
         failOnError: true,
       },
     }),
     viteReact(),
-    nitro({
-      baseURL: siteBasePath,
-      prerender: {
-        crawlLinks: true,
-      },
-    }),
   ],
 });
