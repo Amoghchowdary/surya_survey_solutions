@@ -1,6 +1,6 @@
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
-const heroImage = asset("images/survey-hero.jpg");
+const heroImage = asset("images/survey-hero-4k.webp");
 const fieldImage = asset("images/survey-field.jpg");
 const roadImage = asset("images/survey-road.jpg");
 const equipmentImage = asset("images/survey-equipment.jpg");

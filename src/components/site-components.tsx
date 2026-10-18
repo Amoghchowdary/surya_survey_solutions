@@ -17,7 +17,7 @@ export function ProjectCard({ project, onOpen }: { project: Project; onOpen?: (p
 }
 
 export function PageHero({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
-  return <section className="relative overflow-hidden bg-hero py-20 text-hero-foreground md:py-28"><div className="engineering-grid absolute inset-0 opacity-[0.07]"/><div className="page-wrap relative"><div className="text-xs font-extrabold uppercase text-accent">{eyebrow}</div><h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl">{title}</h1><p className="mt-6 max-w-2xl text-lg leading-8 text-hero-foreground/70">{text}</p></div></section>
+  return <section className="relative overflow-hidden bg-hero pb-20 pt-36 text-hero-foreground md:pb-28 md:pt-44"><div className="engineering-grid absolute inset-0 opacity-[0.07]"/><div className="page-wrap relative"><div className="text-xs font-extrabold uppercase text-accent">{eyebrow}</div><h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl">{title}</h1><p className="mt-6 max-w-2xl text-lg leading-8 text-hero-foreground/70">{text}</p></div></section>
 }
 
 export function CtaBand() {

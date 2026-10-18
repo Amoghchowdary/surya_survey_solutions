@@ -1,17 +1,2 @@
-Surya Survey Solutions Website
-Release: V1
-Package version: 1.0.0
-Deployment target: GitHub Pages
-Repository: Amoghchowdary/surya_survey_solutions
-Public base path: /surya_survey_solutions/
-
-V1 corrections:
-- Surya logo retained in header and footer.
-- Surya favicon set replaces the previous platform favicon.
-- Previous builder-specific project metadata/dependencies removed.
-- Old Git repository metadata excluded from the source package.
-- GitHub Pages workflow included.
-- TanStack Start configured for static SPA/prerender output (no forced Nitro static SSR pass).
-- GitHub Pages 404 fallback generated during deployment.
-- Repository base path used for assets and routing.
-- Robocopy helper included for the permanent Surya-Git-Deploy workflow.
+Surya Survey Solutions V6
+Version: 6.0.0

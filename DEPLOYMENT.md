@@ -1,48 +1,57 @@
-# Surya Survey Solutions V1 Deployment
+# Surya Survey Solutions V6 Deployment
 
-## Local test
+## 1. Local verification
 
 ```powershell
-npm install
-npm run build
+cd "C:\Users\SarkshGroups\OneDrive\Desktop\Surya\Surya_Survey_Solutions_V6"
+
+Set-ExecutionPolicy -Scope Process Bypass -Force
+.\scripts\INSTALL_AND_VERIFY_V6.ps1
 npm run dev
 ```
 
-## Permanent deployment folder
+The verification script runs:
 
-Recommended permanent Git folder:
+1. `npm cache verify`
+2. `npm install`
+3. `npm run security:audit`
+4. `npm run build`
+
+Expected production output: `dist/client`.
+
+## 2. Permanent Git deployment folder
+
+Keep this folder permanently:
 
 `C:\Users\SarkshGroups\OneDrive\Desktop\Surya\Surya-Git-Deploy`
 
-Keep its `.git` folder permanently. Do not delete the deploy folder between website versions.
+Its `.git` directory must never be deleted when changing website versions.
 
-## Copy V1 into the deploy folder
+If it does not exist yet:
 
-From this V1 source folder:
+```powershell
+.\scripts\setup-deploy-folder.ps1
+```
+
+## 3. Robocopy V6 into the permanent deploy repository
+
+From the V6 source folder:
 
 ```powershell
 .\scripts\robocopy-to-deploy.ps1
 ```
 
-Or manually:
+This mirrors V6 into `Surya-Git-Deploy` while excluding `.git`, `node_modules`, build output and caches.
 
-```powershell
-robocopy `
-"C:\Users\SarkshGroups\OneDrive\Desktop\Surya\Surya_Survey_Solutions_V1" `
-"C:\Users\SarkshGroups\OneDrive\Desktop\Surya\Surya-Git-Deploy" `
-/MIR `
-/XD ".git" "node_modules" ".output" "dist" ".vite" ".tanstack" ".cache" `
-/XF "*.log"
-```
-
-## Push
+## 4. Push V6
 
 ```powershell
 cd "C:\Users\SarkshGroups\OneDrive\Desktop\Surya\Surya-Git-Deploy"
+
 git status
 git add .
-git commit -m "Deploy Surya Survey Solutions V1"
-git push
+git commit -m "V6 - Final approved homepage and 16K survey hero"
+git push origin main
 ```
 
-GitHub Actions deploys the static site automatically from `main`.
+GitHub Actions runs the critical npm audit gate, builds the site and deploys `dist/client` to GitHub Pages.
