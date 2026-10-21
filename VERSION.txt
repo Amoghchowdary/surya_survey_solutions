@@ -1,2 +1,2 @@
-Surya Survey Solutions V6
-Version: 6.0.0
+Surya Survey Solutions V7
+Version: 7.0.0

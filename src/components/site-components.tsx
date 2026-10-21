@@ -1,14 +1,50 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { stats, type Project } from "@/lib/site-data";
+import { clientLogos, stats, type Project } from "@/lib/site-data";
 
 export function SectionHeading({ eyebrow, title, text, light = false }: { eyebrow?: string; title: string; text?: string; light?: boolean }) {
   return <div className="max-w-3xl"><div className={`mb-4 flex items-center gap-3 text-xs font-extrabold uppercase ${light ? "text-accent" : "text-primary"}`}><span className="h-px w-8 bg-accent"/>{eyebrow}</div><h2 className={`text-3xl font-extrabold leading-tight md:text-5xl ${light ? "text-hero-foreground" : "text-foreground"}`}>{title}</h2>{text && <p className={`mt-5 max-w-2xl text-base leading-7 ${light ? "text-hero-foreground/70" : "text-muted-foreground"}`}>{text}</p>}</div>
 }
 
 export function Stats({ compact = false }: { compact?: boolean }) {
-  return <div className={`grid grid-cols-2 border-y border-border ${compact ? "lg:grid-cols-4" : "md:grid-cols-4"}`}>{stats.map((s) => <div key={s.label} className="border-r border-border px-5 py-8 last:border-r-0 md:px-8"><div className="text-3xl font-extrabold text-primary md:text-5xl">{s.value}</div><div className="mt-2 text-xs font-bold uppercase text-muted-foreground">{s.label}</div></div>)}</div>
+  return (
+    <div className={`stats-grid grid grid-cols-2 border-y border-border ${compact ? "lg:grid-cols-5" : "md:grid-cols-5"}`}>
+      {stats.map((s) => (
+        <div key={s.label} className="stats-cell border-r border-border px-5 py-8 md:px-7 lg:px-8">
+          <div className="text-3xl font-extrabold text-primary md:text-4xl lg:text-5xl">{s.value}</div>
+          <div className="mt-2 text-[11px] font-bold uppercase tracking-[0.02em] text-muted-foreground lg:text-xs">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function ClientLogoMarquee() {
+  return (
+    <section className="client-logo-section" aria-labelledby="client-logo-heading">
+      <div className="page-wrap client-logo-heading-wrap">
+        <div>
+          <p className="client-logo-eyebrow">Project Experience</p>
+          <h2 id="client-logo-heading" className="client-logo-title">Previously Worked With</h2>
+        </div>
+        <p className="client-logo-note">Organizations we have worked with across surveying and civil engineering assignments.</p>
+      </div>
+      <div className="client-logo-marquee" role="region" aria-label="Previously worked with company logos">
+        <div className="client-logo-track">
+          {[0, 1].map((copy) => (
+            <div className="client-logo-group" aria-hidden={copy === 1} key={copy}>
+              {clientLogos.map((logo) => (
+                <div className="client-logo-card" key={`${copy}-${logo.src}`}>
+                  <img src={logo.src} alt={copy === 0 ? logo.alt : ""} width={220} height={100} loading="lazy" />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export function ProjectCard({ project, onOpen }: { project: Project; onOpen?: (p: Project) => void }) {

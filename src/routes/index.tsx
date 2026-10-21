@@ -16,7 +16,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CtaBand, ProjectCard, SectionHeading, Stats } from "@/components/site-components";
+import { ClientLogoMarquee, CtaBand, ProjectCard, SectionHeading, Stats } from "@/components/site-components";
 import { images, projects, services } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
@@ -106,6 +106,7 @@ function HomePage() {
       </section>
 
       <section className="home-stats"><div className="page-wrap py-8"><Stats /></div></section>
+      <ClientLogoMarquee />
 
       <section className="section-pad bg-background">
         <div className="page-wrap grid items-center gap-12 lg:grid-cols-2">
