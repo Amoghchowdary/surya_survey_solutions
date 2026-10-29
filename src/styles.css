@@ -424,8 +424,8 @@
   padding-right: 1rem;
 }
 .client-logo-card {
-  width: clamp(10.5rem, 13vw, 14rem);
-  height: 7rem;
+  width: clamp(12rem, 16vw, 17rem);
+  height: 8rem;
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
@@ -440,16 +440,14 @@
 .client-logo-card img {
   display: block;
   width: 100%;
-  height: 4.25rem;
+  height: 5.2rem;
   object-fit: contain;
-  filter: grayscale(1);
-  opacity: .78;
-  transition: filter .25s ease, opacity .25s ease, transform .25s ease;
+  filter: none;
+  opacity: 1;
+  transition: transform .25s ease;
 }
 .client-logo-card:hover img {
-  filter: grayscale(0);
-  opacity: 1;
-  transform: scale(1.03);
+  transform: scale(1.035);
 }
 @keyframes client-logo-scroll-ltr {
   from { transform: translate3d(-50%, 0, 0); }
@@ -466,7 +464,7 @@
     mask-image: linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%);
   }
-  .client-logo-card { width: 9.5rem; height: 6.3rem; }
+  .client-logo-card { width: 10.75rem; height: 6.8rem; }
   .client-logo-track { animation-duration: 25s; }
 }
 

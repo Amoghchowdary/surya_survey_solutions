@@ -7,22 +7,19 @@ const equipmentImage = asset("images/survey-equipment.jpg");
 export const images = { heroImage, fieldImage, roadImage, equipmentImage };
 
 export const stats = [
-  { value: "00+", label: "Total Projects", dominant: true },
-  { value: "00+", label: "Completed Projects", dominant: true },
-  { value: "00", label: "Ongoing Projects", dominant: true },
-  { value: "00", label: "Upcoming Projects", dominant: true },
-  { value: "00+", label: "Clients Served" },
+  { value: "120+", label: "Total Projects", dominant: true },
+  { value: "95+", label: "Completed Projects", dominant: true },
+  { value: "12", label: "Ongoing Projects", dominant: true },
+  { value: "13", label: "Upcoming Projects", dominant: true },
+  { value: "40+", label: "Clients Served" },
 ];
 
 export const clientLogos = [
-  { src: asset("images/client-logos/client-logo-01.svg"), alt: "Previously worked with client logo 01" },
-  { src: asset("images/client-logos/client-logo-02.svg"), alt: "Previously worked with client logo 02" },
-  { src: asset("images/client-logos/client-logo-03.svg"), alt: "Previously worked with client logo 03" },
-  { src: asset("images/client-logos/client-logo-04.svg"), alt: "Previously worked with client logo 04" },
-  { src: asset("images/client-logos/client-logo-05.svg"), alt: "Previously worked with client logo 05" },
-  { src: asset("images/client-logos/client-logo-06.svg"), alt: "Previously worked with client logo 06" },
-  { src: asset("images/client-logos/client-logo-07.svg"), alt: "Previously worked with client logo 07" },
-  { src: asset("images/client-logos/client-logo-08.svg"), alt: "Previously worked with client logo 08" },
+  { src: asset("images/client-logos/advaita-properties.png"), alt: "Advaita Properties logo" },
+  { src: asset("images/client-logos/sri-lakshmi-developers.png"), alt: "Sri Lakshmi Developers logo" },
+  { src: asset("images/client-logos/yashoda-infra-developers.png"), alt: "Yashoda Infra Developers logo" },
+  { src: asset("images/client-logos/bheemaa-infra-solutions.png"), alt: "Bheemaa Infra Solutions Private Limited logo" },
+  { src: asset("images/client-logos/greater-infra.png"), alt: "Greater Infra logo" },
 ];
 
 export const services = [

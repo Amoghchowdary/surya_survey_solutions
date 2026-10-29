@@ -38,6 +38,8 @@ export const Route = createFileRoute("/")({
         "@type": ["LocalBusiness", "ProfessionalService"],
         name: "Surya Survey Solutions",
         description: "Professional civil engineering surveying and field measurement solutions.",
+        telephone: "7036892959",
+        email: "suryamovva@gmail.com",
       }),
     }],
   }),

@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-Write-Host "Surya Survey Solutions V7 - clean install and verification" -ForegroundColor Cyan
+Write-Host "Surya Survey Solutions V9 - clean install and verification" -ForegroundColor Cyan
 
 if (Test-Path "node_modules") {
     Remove-Item -Recurse -Force "node_modules"
@@ -16,5 +16,5 @@ npm run security:audit
 npm run build
 
 Write-Host ""
-Write-Host "V7 install, audit and production build completed successfully." -ForegroundColor Green
+Write-Host "V9 install, audit and production build completed successfully." -ForegroundColor Green
 Write-Host "Run: npm run dev" -ForegroundColor Green

@@ -103,7 +103,11 @@ export function SiteFooter() {
         </div>
         <div>
           <h2 className="mb-5 text-sm font-bold uppercase text-emerald-400">Contact</h2>
-          <ul className="space-y-4 text-sm text-white/65"><li className="flex gap-3"><Phone className="mt-0.5 size-4 text-emerald-400" />Phone to be added</li><li className="flex gap-3"><Mail className="mt-0.5 size-4 text-emerald-400" />Email to be added</li><li className="flex gap-3"><MapPin className="mt-0.5 size-4 text-emerald-400" />Office address to be added</li></ul>
+          <ul className="space-y-4 text-sm text-white/65">
+            <li className="flex gap-3"><Phone className="mt-0.5 size-4 shrink-0 text-emerald-400" /><a href="tel:7036892959" className="break-all hover:text-white">7036892959</a></li>
+            <li className="flex gap-3"><Mail className="mt-0.5 size-4 shrink-0 text-emerald-400" /><a href="mailto:suryamovva@gmail.com" className="break-all hover:text-white">suryamovva@gmail.com</a></li>
+            <li className="flex gap-3"><MapPin className="mt-0.5 size-4 shrink-0 text-emerald-400" />Office address to be added</li>
+          </ul>
         </div>
       </div>
       <div className="border-t border-white/10"><div className="page-wrap py-5 text-xs text-white/45">© Surya Survey Solutions. All Rights Reserved.</div></div>
