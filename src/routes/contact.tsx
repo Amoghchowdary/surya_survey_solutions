@@ -58,8 +58,8 @@ function ContactPage() {
       />
 
       <section className="section-pad">
-        <div className="page-wrap grid gap-12 lg:grid-cols-[.75fr_1.25fr]">
-          <aside>
+        <div className="page-wrap contact-layout grid gap-12 lg:grid-cols-[.75fr_1.25fr]">
+          <aside className="contact-sidebar">
             <h2 className="text-2xl font-extrabold">Company contact information</h2>
             <p className="mt-4 leading-7 text-muted-foreground">
               For survey enquiries and project discussions, contact Surya Survey Solutions using the details below.
@@ -83,7 +83,7 @@ function ContactPage() {
               ))}
             </ul>
 
-            <div className="mt-8 grid grid-cols-3 gap-2">
+            <div className="contact-quick-actions mt-8 grid grid-cols-3 gap-2">
               <a href="tel:7036892959" className="flex min-h-20 flex-col items-center justify-center gap-2 border border-border text-xs font-bold text-foreground hover:border-primary hover:text-primary">
                 <Phone className="size-5" />Call
               </a>
@@ -96,7 +96,7 @@ function ContactPage() {
             </div>
           </aside>
 
-          <div className="bg-surface p-6 md:p-10">
+          <div className="contact-form-card bg-surface p-6 md:p-10">
             <h2 className="text-2xl font-extrabold">Survey Enquiry Form</h2>
             <p className="mt-2 text-sm text-muted-foreground">Fields marked * are required.</p>
 
@@ -109,7 +109,7 @@ function ContactPage() {
                 <Button className="mt-5" onClick={() => setSent(false)}>Send another enquiry</Button>
               </div>
             ) : (
-              <form className="mt-8 grid gap-5 md:grid-cols-2" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+              <form className="contact-form-grid mt-8 grid gap-5 md:grid-cols-2" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
                 <Field id="name" label="Full Name *"><Input id="name" required /></Field>
                 <Field id="company" label="Company Name"><Input id="company" /></Field>
                 <Field id="phone" label="Phone Number *"><Input id="phone" type="tel" required /></Field>
@@ -144,7 +144,7 @@ function ContactPage() {
         </div>
       </section>
 
-      <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-3 border-t border-border bg-background lg:hidden">
+      <div className="contact-sticky-actions fixed inset-x-0 bottom-0 z-30 grid grid-cols-3 border-t border-border bg-background lg:hidden">
         <a href="tel:7036892959" className="flex min-h-14 items-center justify-center border-r border-border text-xs font-bold uppercase">Call</a>
         <button disabled title="WhatsApp number to be confirmed" className="min-h-14 border-r border-border text-xs font-bold uppercase text-muted-foreground disabled:cursor-not-allowed">WhatsApp</button>
         <button onClick={() => window.scrollTo({ top: 500, behavior: "smooth" })} className="min-h-14 border-r border-border text-xs font-bold uppercase">Enquire</button>
