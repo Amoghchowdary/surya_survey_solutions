@@ -21,6 +21,8 @@ export function Stats({ compact = false }: { compact?: boolean }) {
 }
 
 export function ClientLogoMarquee() {
+  const base = import.meta.env.BASE_URL;
+
   return (
     <section className="client-logo-section" aria-labelledby="client-logo-heading">
       <div className="page-wrap client-logo-heading-wrap">
@@ -28,17 +30,31 @@ export function ClientLogoMarquee() {
           <p className="client-logo-eyebrow">Project Experience</p>
           <h2 id="client-logo-heading" className="client-logo-title">Previously Worked With</h2>
         </div>
-        <p className="client-logo-note">Organizations we have worked with across surveying and civil engineering assignments.</p>
+        <p className="client-logo-note">Select a company to open available project evidence and field photographs.</p>
       </div>
+
       <div className="client-logo-marquee" role="region" aria-label="Previously worked with company logos">
         <div className="client-logo-track">
           {[0, 1].map((copy) => (
             <div className="client-logo-group" aria-hidden={copy === 1} key={copy}>
-              {clientLogos.map((logo) => (
-                <div className="client-logo-card" key={`${copy}-${logo.src}`}>
-                  <img src={logo.src} alt={copy === 0 ? logo.alt : ""} width={220} height={100} loading="lazy" />
-                </div>
-              ))}
+              {clientLogos.map((logo) => {
+                const href = logo.projectSlug
+                  ? `${base}projects#project-${logo.projectSlug}`
+                  : `${base}projects#projects-gallery`;
+
+                return (
+                  <a
+                    href={href}
+                    className="client-logo-card client-logo-link"
+                    key={`${copy}-${logo.name}`}
+                    tabIndex={copy === 1 ? -1 : undefined}
+                    aria-label={copy === 0 ? `View project gallery for ${logo.name}` : undefined}
+                  >
+                    <img src={logo.src} alt={copy === 0 ? logo.alt : ""} width={240} height={110} loading="lazy" />
+                    <span className="client-logo-name">{logo.name}</span>
+                  </a>
+                );
+              })}
             </div>
           ))}
         </div>
@@ -48,8 +64,37 @@ export function ClientLogoMarquee() {
 }
 
 export function ProjectCard({ project, onOpen }: { project: Project; onOpen?: (p: Project) => void }) {
-  const content = <><div className="relative aspect-[4/3] overflow-hidden bg-muted"><img src={project.image} alt={`Replaceable placeholder for ${project.title} civil survey fieldwork`} width={1408} height={1008} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"/><span className="absolute left-4 top-4 bg-hero px-3 py-1 text-[10px] font-extrabold text-hero-foreground">{project.status}</span><span className="absolute bottom-3 right-3 bg-background/90 px-2 py-1 text-[10px] font-bold text-foreground">PLACEHOLDER IMAGE</span></div><div className="border border-t-0 border-border bg-card p-5"><div className="mb-3 flex items-center justify-between"><span className="text-xs font-bold uppercase text-primary">{project.type} Survey</span><ArrowRight className="size-4 text-accent"/></div><h3 className="text-xl font-bold">{project.title}</h3><p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground"><MapPin className="size-4"/>{project.location}</p></div></>;
-  return onOpen ? <button type="button" onClick={() => onOpen(project)} className="project-card group w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{content}</button> : <div className="project-card group">{content}</div>;
+  const content = (
+    <>
+      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+        <img
+          src={project.image}
+          alt={`${project.title} client-supplied civil survey fieldwork`}
+          width={1600}
+          height={1200}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <span className="absolute left-4 top-4 bg-hero px-3 py-1 text-[10px] font-extrabold text-hero-foreground">{project.status}</span>
+      </div>
+      <div className="border border-t-0 border-border bg-card p-5">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <span className="text-xs font-bold uppercase text-primary">{project.type}</span>
+          <ArrowRight className="size-4 shrink-0 text-accent"/>
+        </div>
+        <h3 className="text-xl font-bold">{project.title}</h3>
+        {project.client && <p className="mt-2 text-sm font-semibold text-foreground">{project.client}</p>}
+        <p className="mt-2 flex items-start gap-2 text-sm text-muted-foreground">
+          <MapPin className="mt-0.5 size-4 shrink-0"/>
+          <span>{project.location}</span>
+        </p>
+      </div>
+    </>
+  );
+
+  return onOpen
+    ? <button type="button" onClick={() => onOpen(project)} className="project-card group w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{content}</button>
+    : <div className="project-card group">{content}</div>;
 }
 
 export function PageHero({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {

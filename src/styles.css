@@ -1650,3 +1650,64 @@
   .home-hero-actions { grid-template-columns: 1fr !important; }
   .home-hero-mobile-stage { aspect-ratio: 4 / 5; }
 }
+
+
+/* V13 — real client/project media integration */
+.client-logo-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+.client-logo-link:focus-visible {
+  outline: 2px solid #10c98b;
+  outline-offset: 3px;
+}
+.client-logo-card {
+  min-height: 9.25rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: .55rem;
+}
+.client-logo-card img {
+  max-width: 90%;
+  height: 5.1rem;
+}
+.client-logo-name {
+  display: block;
+  width: 100%;
+  padding-inline: .35rem;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .68rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #0b2031;
+}
+.project-card {
+  scroll-margin-top: 7rem;
+}
+.project-dialog-gallery a {
+  display: block;
+  overflow: hidden;
+  background: #e8edf0;
+}
+.project-dialog-gallery img {
+  min-height: 100%;
+}
+
+@media (max-width: 767px) {
+  .client-logo-card {
+    min-height: 7.3rem !important;
+    height: 7.3rem !important;
+  }
+  .client-logo-card img {
+    height: 4.15rem !important;
+  }
+  .client-logo-name {
+    font-size: .6rem;
+  }
+  .project-dialog-gallery {
+    gap: .4rem;
+  }
+}

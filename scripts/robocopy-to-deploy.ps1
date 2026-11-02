@@ -7,11 +7,11 @@ Write-Host "Source: $Source"
 Write-Host "Deploy: $Deploy"
 
 if (-not (Test-Path $Deploy)) {
-    throw "Deployment repository was not found at: $Deploy"
+    throw "Deployment folder was not found at: $Deploy"
 }
 
 if (-not (Test-Path (Join-Path $Deploy ".git"))) {
-    throw "The deployment folder is not a Git repository: $Deploy"
+    throw "Existing deployment folder is not the expected Git-backed deployment directory: $Deploy"
 }
 
 robocopy `
@@ -27,10 +27,5 @@ if ($code -ge 8) {
 }
 
 Write-Host "Robocopy completed successfully (code $code)."
-Write-Host "Next:"
-Write-Host "cd `"$Deploy`""
-Write-Host "git status"
-Write-Host "git add -A"
-Write-Host "git commit -m `"Deploy Surya Survey Solutions V12`""
-Write-Host "git push origin main"
+Write-Host "Deployment folder updated. No Git command has been executed."
 exit 0

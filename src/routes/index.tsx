@@ -167,7 +167,7 @@ function HomePage() {
 
       <section className="section-pad bg-background">
         <div className="page-wrap">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><SectionHeading eyebrow="Featured projects" title="Surveying in the Field" text="Project entries are prepared for actual client photographs and verified project information." /><Button asChild variant="outline"><Link to="/projects">View all projects <ArrowRight /></Link></Button></div>
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><SectionHeading eyebrow="Featured projects" title="Surveying in the Field" text="Selected project evidence from client-supplied field photographs across real civil engineering sites." /><Button asChild variant="outline"><Link to="/projects">View all projects <ArrowRight /></Link></Button></div>
           <div className="featured-projects-grid mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">{projects.map(p => <ProjectCard key={p.id} project={p} />)}</div>
         </div>
       </section>

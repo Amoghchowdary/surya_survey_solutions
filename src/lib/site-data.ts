@@ -14,12 +14,20 @@ export const stats = [
   { value: "40+", label: "Clients Served" },
 ];
 
-export const clientLogos = [
-  { src: asset("images/client-logos/advaita-properties.png"), alt: "Advaita Properties logo" },
-  { src: asset("images/client-logos/sri-lakshmi-developers.png"), alt: "Sri Lakshmi Developers logo" },
-  { src: asset("images/client-logos/yashoda-infra-developers.png"), alt: "Yashoda Infra Developers logo" },
-  { src: asset("images/client-logos/bheemaa-infra-solutions.png"), alt: "Bheemaa Infra Solutions Private Limited logo" },
-  { src: asset("images/client-logos/greater-infra.png"), alt: "Greater Infra logo" },
+export type ClientLogo = {
+  name: string;
+  src: string;
+  alt: string;
+  projectSlug?: string;
+};
+
+export const clientLogos: ClientLogo[] = [
+  { name: "Advaita Properties", src: asset("images/client-logos/advaita-properties.png"), alt: "Advaita Properties logo" },
+  { name: "Sri Lakshmi Developers", src: asset("images/client-logos/sri-lakshmi-developers.png"), alt: "Sri Lakshmi Developers logo" },
+  { name: "Yashoda Infra Developers", src: asset("images/client-logos/yashoda-infra-developers.png"), alt: "Yashoda Infra Developers logo", projectSlug: "yashoda-villa-site" },
+  { name: "Bheemaa Infra Solutions Pvt. Ltd.", src: asset("images/client-logos/bheemaa-infra-solutions.png"), alt: "Bheemaa Infra Solutions Private Limited logo", projectSlug: "bheemaa-amaravati-gad-tower" },
+  { name: "Greater Infra", src: asset("images/client-logos/greater-infra.png"), alt: "Greater Infra logo", projectSlug: "greater-infra-villa-project" },
+  { name: "Sri Eswar Ram", src: asset("images/client-logos/sri-eswar-ram.png"), alt: "Sri Eswar Ram logo" },
 ];
 
 export const services = [
@@ -34,12 +42,136 @@ export const services = [
 ] as const;
 
 export type Project = {
-  id: number; title: string; location: string; type: string; status: "COMPLETED" | "ONGOING"; year: string; description: string; image: string; gallery: string[];
+  id: number;
+  slug: string;
+  title: string;
+  client?: string;
+  location: string;
+  type: string;
+  status: "FIELDWORK";
+  year: string;
+  description: string;
+  scope: string;
+  equipment: string;
+  sourceAlbum: string;
+  image: string;
+  gallery: string[];
 };
 
 export const projects: Project[] = [
-  { id: 1, title: "Project 01", location: "Location to be added", type: "Total Station", status: "COMPLETED", year: "Year to be added", description: "Actual project scope and field details will be added with the client photographs.", image: fieldImage, gallery: [fieldImage, equipmentImage, heroImage] },
-  { id: 2, title: "Project 02", location: "Location to be added", type: "Road", status: "ONGOING", year: "Year to be added", description: "Actual project scope and field details will be added with the client photographs.", image: roadImage, gallery: [roadImage, heroImage, equipmentImage] },
-  { id: 3, title: "Project 03", location: "Location to be added", type: "DGPS", status: "COMPLETED", year: "Year to be added", description: "Actual project scope and field details will be added with the client photographs.", image: equipmentImage, gallery: [equipmentImage, roadImage, fieldImage] },
-  { id: 4, title: "Project 04", location: "Location to be added", type: "Topographical", status: "ONGOING", year: "Year to be added", description: "Actual project scope and field details will be added with the client photographs.", image: heroImage, gallery: [heroImage, fieldImage, roadImage] },
+  {
+    id: 1,
+    slug: "amaravati-site",
+    title: "Amaravati Site Survey",
+    location: "Amaravati, Andhra Pradesh",
+    type: "Construction Survey",
+    status: "FIELDWORK",
+    year: "2026",
+    description: "Client-supplied project media from the Amaravati site showing field surveying, construction progress, Total Station observations and site documentation.",
+    scope: "Construction-site measurement, field observation and survey documentation visible in the supplied media.",
+    equipment: "Total Station visible in supplied project media.",
+    sourceAlbum: "Amaravati site",
+    image: asset("images/projects/amaravati-site/project-01.webp"),
+    gallery: [
+      asset("images/projects/amaravati-site/project-01.webp"),
+      asset("images/projects/amaravati-site/project-02.webp"),
+      asset("images/projects/amaravati-site/project-03.webp"),
+      asset("images/projects/amaravati-site/project-04.webp"),
+      asset("images/projects/amaravati-site/project-05.webp"),
+      asset("images/projects/amaravati-site/project-06.webp"),
+      asset("images/projects/amaravati-site/project-07.webp"),
+      asset("images/projects/amaravati-site/project-08.webp"),
+      asset("images/projects/amaravati-site/project-09.webp"),
+      asset("images/projects/amaravati-site/project-10.webp"),
+      asset("images/projects/amaravati-site/project-11.webp"),
+      asset("images/projects/amaravati-site/project-12.webp")
+    ],
+  },
+  {
+    id: 2,
+    slug: "bheemaa-amaravati-gad-tower",
+    title: "Bheemaa Amaravati GAD Tower Survey",
+    client: "Bheemaa Infra Solutions Pvt. Ltd.",
+    location: "Amaravati, Andhra Pradesh",
+    type: "Industrial / Total Station",
+    status: "FIELDWORK",
+    year: "2026",
+    description: "Field evidence supplied for the Bheemaa Amaravati GAD Tower assignment, including Total Station setups, industrial construction activity and technical site documentation.",
+    scope: "Industrial construction surveying and measurement work visible in the supplied project album.",
+    equipment: "Total Station visible throughout the supplied project media.",
+    sourceAlbum: "bheema amaravati Gad tower",
+    image: asset("images/projects/bheemaa-amaravati-gad-tower/project-01.webp"),
+    gallery: [
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-01.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-02.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-03.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-04.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-05.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-06.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-07.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-08.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-09.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-10.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-11.webp"),
+      asset("images/projects/bheemaa-amaravati-gad-tower/project-12.webp")
+    ],
+  },
+  {
+    id: 3,
+    slug: "greater-infra-villa-project",
+    title: "Greater Infra Villa Project Survey",
+    client: "Greater Infra",
+    location: "Location not specified in supplied folder",
+    type: "Residential / Construction",
+    status: "FIELDWORK",
+    year: "2026",
+    description: "Client-supplied field photographs documenting surveying activity across a villa/residential construction project, including foundations, structural work and Total Station setups.",
+    scope: "Residential construction surveying, layout observation and field measurement visible in the supplied project media.",
+    equipment: "Total Station visible in supplied project media.",
+    sourceAlbum: "greater infra villa project",
+    image: asset("images/projects/greater-infra-villa-project/project-01.webp"),
+    gallery: [
+      asset("images/projects/greater-infra-villa-project/project-01.webp"),
+      asset("images/projects/greater-infra-villa-project/project-02.webp"),
+      asset("images/projects/greater-infra-villa-project/project-03.webp"),
+      asset("images/projects/greater-infra-villa-project/project-04.webp"),
+      asset("images/projects/greater-infra-villa-project/project-05.webp"),
+      asset("images/projects/greater-infra-villa-project/project-06.webp"),
+      asset("images/projects/greater-infra-villa-project/project-07.webp"),
+      asset("images/projects/greater-infra-villa-project/project-08.webp"),
+      asset("images/projects/greater-infra-villa-project/project-09.webp"),
+      asset("images/projects/greater-infra-villa-project/project-10.webp"),
+      asset("images/projects/greater-infra-villa-project/project-11.webp"),
+      asset("images/projects/greater-infra-villa-project/project-12.webp"),
+      asset("images/projects/greater-infra-villa-project/project-13.webp"),
+      asset("images/projects/greater-infra-villa-project/project-14.webp"),
+      asset("images/projects/greater-infra-villa-project/project-15.webp")
+    ],
+  },
+  {
+    id: 4,
+    slug: "yashoda-villa-site",
+    title: "Yashoda Villa Site Survey",
+    client: "Yashoda Infra Developers",
+    location: "Location not specified in supplied folder",
+    type: "Residential / Construction",
+    status: "FIELDWORK",
+    year: "2026",
+    description: "Client-supplied progress photographs from the Yashoda villa site showing foundations, columns and structural construction stages relevant to surveying and layout support.",
+    scope: "Villa-site construction survey and layout support represented by the supplied project photographs.",
+    equipment: "Exact equipment model is not consistently visible in the selected project photographs.",
+    sourceAlbum: "yashoda villa site",
+    image: asset("images/projects/yashoda-villa-site/project-01.webp"),
+    gallery: [
+      asset("images/projects/yashoda-villa-site/project-01.webp"),
+      asset("images/projects/yashoda-villa-site/project-02.webp"),
+      asset("images/projects/yashoda-villa-site/project-03.webp"),
+      asset("images/projects/yashoda-villa-site/project-04.webp"),
+      asset("images/projects/yashoda-villa-site/project-05.webp"),
+      asset("images/projects/yashoda-villa-site/project-06.webp"),
+      asset("images/projects/yashoda-villa-site/project-07.webp"),
+      asset("images/projects/yashoda-villa-site/project-08.webp"),
+      asset("images/projects/yashoda-villa-site/project-09.webp")
+    ],
+  },
 ];
