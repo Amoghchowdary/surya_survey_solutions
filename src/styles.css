@@ -1764,3 +1764,19 @@
   .project-media-tile figcaption { font-size: .56rem; }
   .project-dialog { width: calc(100vw - 1rem) !important; max-width: calc(100vw - 1rem) !important; }
 }
+
+
+/* V15 — project media presentation corrections */
+.project-media-tile {
+  margin: 0;
+}
+.project-media-tile > a,
+.project-media-video > video {
+  display: block;
+  width: 100%;
+}
+.project-media-video video {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #050b10;
+}

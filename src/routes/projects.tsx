@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Building2, CalendarDays, Images, MapPin, PlayCircle, Wrench } from "lucide-react";
+import { Building2, CalendarDays, MapPin, PlayCircle, Wrench } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { PageHero, ProjectCard, Stats } from "@/components/site-components";
 import { projects, type Project, type ProjectMedia } from "@/lib/site-data";
@@ -29,6 +29,8 @@ function MediaTile({ media, project, index }: { media: ProjectMedia; project: Pr
       <figure className="project-media-tile project-media-video">
         <video
           controls
+          autoPlay
+          muted
           playsInline
           preload="metadata"
           poster={media.poster}
@@ -37,24 +39,27 @@ function MediaTile({ media, project, index }: { media: ProjectMedia; project: Pr
           <source src={media.src} type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
-        <figcaption><PlayCircle className="size-3.5" /> Video {index + 1}</figcaption>
       </figure>
     );
   }
 
   return (
     <figure className="project-media-tile">
-      <a href={media.src} target="_blank" rel="noreferrer" aria-label={`Open ${project.title} image ${index + 1}`}>
+      <a
+        href={media.src}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Open ${project.title} project photograph`}
+      >
         <img
           src={media.src}
-          alt={`${project.title} fieldwork view ${index + 1}`}
+          alt={`${project.title} project fieldwork photograph`}
           width={1200}
           height={900}
           loading="lazy"
           decoding="async"
         />
       </a>
-      <figcaption><Images className="size-3.5" /> Image {index + 1}</figcaption>
     </figure>
   );
 }
@@ -137,8 +142,16 @@ function ProjectsPage() {
       <Dialog open={!!selected} onOpenChange={(open) => { if (!open) setSelected(null); }}>
         {selected && (
           <DialogContent className="project-dialog max-h-[94vh] max-w-6xl overflow-y-auto p-0">
-            <img src={selected.image} alt={`${selected.title} fieldwork cover`} width={1800} height={1200} className="project-dialog-hero aspect-[16/8] w-full object-cover" />
-            <div className="project-dialog-body p-5 md:p-8">
+            {selected.slug !== "bheemaa-amaravati-gad-tower" && (
+              <img
+                src={selected.image}
+                alt={`${selected.title} fieldwork cover`}
+                width={1800}
+                height={1200}
+                className="project-dialog-hero aspect-[16/8] w-full object-cover"
+              />
+            )}
+            <div className={`project-dialog-body p-5 md:p-8 ${selected.slug === "bheemaa-amaravati-gad-tower" ? "pt-8 md:pt-10" : ""}`}>
               <DialogHeader>
                 <div className="mb-3 text-xs font-extrabold text-accent">{selected.status}</div>
                 <DialogTitle className="project-dialog-title text-2xl md:text-3xl">{selected.title}</DialogTitle>
