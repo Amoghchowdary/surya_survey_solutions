@@ -94,7 +94,16 @@ export function ProjectCard({ project, onOpen }: { project: Project; onOpen?: (p
 
   return onOpen
     ? <button type="button" onClick={() => onOpen(project)} className="project-card group w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{content}</button>
-    : <div className="project-card group">{content}</div>;
+    : (
+      <Link
+        to="/projects"
+        hash={`project-${project.slug}`}
+        className="project-card group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        aria-label={`View ${project.title}`}
+      >
+        {content}
+      </Link>
+    );
 }
 
 export function PageHero({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {

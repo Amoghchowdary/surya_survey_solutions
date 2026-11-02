@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Building2, CalendarDays, MapPin, PlayCircle, Wrench } from "lucide-react";
+import { Building2, CalendarDays, Images, MapPin, PlayCircle, Wrench } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { PageHero, ProjectCard, Stats } from "@/components/site-components";
 import { projects, type Project, type ProjectMedia } from "@/lib/site-data";

@@ -32,7 +32,7 @@ jobs:
       - name: Block critical dependency vulnerabilities
         run: npm audit --audit-level=critical
 
-      - name: Build V14 for GitHub Pages
+      - name: Build V16 for GitHub Pages
         run: npm run build
         env:
           SITE_BASE_PATH: /surya_survey_solutions/

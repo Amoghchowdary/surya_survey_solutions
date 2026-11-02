@@ -150,7 +150,7 @@ export const projects: Project[] = [
     scope: "Industrial construction surveying and measurement work documented across the supplied images and videos.",
     equipment: "Total Station is visible throughout the supplied project evidence.",
     sourceAlbum: "bheema amaravati Gad tower",
-    image: asset("images/projects/bheemaa-amaravati-gad-tower/image-001.jpg"),
+    image: asset("images/projects/bheemaa-amaravati-gad-tower/image-022.jpg"),
     media: [
       { kind: "image", src: asset("images/projects/bheemaa-amaravati-gad-tower/image-001.jpg"), originalName: "WhatsApp Image 2026-11-01 at 12.17.00 AM.jpeg" },
       { kind: "image", src: asset("images/projects/bheemaa-amaravati-gad-tower/image-002.jpg"), originalName: "WhatsApp Image 2026-11-01 at 12.17.03 AM.jpeg" },
