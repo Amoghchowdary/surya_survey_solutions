@@ -7,6 +7,7 @@ const primaryNav = [
   ["Home", "/"],
   ["About", "/about"],
   ["Projects", "/projects"],
+  ["Gallery", "/gallery"],
   ["Contact", "/contact"],
 ] as const;
 
@@ -35,6 +36,7 @@ export function SiteHeader() {
           <Link to="/about" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>About</Link>
           <a href={`${base}#services`} className="nav-link">Services</a>
           <Link to="/projects" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Projects</Link>
+          <Link to="/gallery" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Gallery</Link>
           <a href={`${base}#why-us`} className="nav-link">Why Us</a>
           <Link to="/contact" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Contact</Link>
         </nav>
@@ -63,6 +65,7 @@ export function SiteHeader() {
             ))}
             <a href={`${base}#services`} onClick={() => setOpen(false)} className="site-mobile-link">Services</a>
             <Link to="/projects" onClick={() => setOpen(false)} className="site-mobile-link">Projects</Link>
+            <Link to="/gallery" onClick={() => setOpen(false)} className="site-mobile-link">Gallery</Link>
             <a href={`${base}#why-us`} onClick={() => setOpen(false)} className="site-mobile-link">Why Us</a>
             <Link to="/contact" onClick={() => setOpen(false)} className="site-mobile-link">Contact</Link>
             <Button asChild size="lg" className="site-mobile-quote">

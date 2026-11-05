@@ -21,7 +21,7 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
-const filters = ["All Projects", "Amaravati", "Bheemaa", "Greater Infra", "Yashoda", "Residential", "Industrial"];
+const filters = ["All Projects", "Amaravati", "Bheemaa", "Bengaluru", "Shamshabad", "Greater Infra", "Yashoda", "Residential", "Industrial"];
 
 function MediaTile({ media, project, index }: { media: ProjectMedia; project: Project; index: number }) {
   if (media.kind === "video") {
@@ -89,6 +89,8 @@ function ProjectsPage() {
     if (filter === "All Projects") return true;
     if (filter === "Amaravati") return project.location.includes("Amaravati");
     if (filter === "Bheemaa") return project.client?.includes("Bheemaa");
+    if (filter === "Bengaluru") return project.location.includes("Bengaluru");
+    if (filter === "Shamshabad") return project.location.includes("Shamshabad");
     if (filter === "Greater Infra") return project.client === "Greater Infra";
     if (filter === "Yashoda") return project.client?.includes("Yashoda");
     if (filter === "Residential") return project.type.includes("Residential");
@@ -104,7 +106,7 @@ function ProjectsPage() {
       <PageHero
         eyebrow="Project proof"
         title="Our Projects"
-        text={`Explore the complete supplied project media library: ${totalImages} unique images and ${totalVideos} field videos across four civil engineering project groups.`}
+        text={`Explore the complete supplied project media library: ${totalImages} unique images and ${totalVideos} field videos across ${projects.length} civil engineering project groups.`}
       />
 
       <div className="page-wrap pt-14"><Stats compact /></div>

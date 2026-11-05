@@ -1780,3 +1780,8 @@
   object-fit: cover;
   background: #050b10;
 }
+
+
+/* V17 celebrations gallery */
+.gallery-photo{border-radius:.35rem}.gallery-photo img{display:block}.gallery-feature-video video{display:block;max-height:70vh;object-fit:contain;background:#000}.gallery-lightbox button{color:#fff}
+@media(max-width:767px){.gallery-summary>div{padding:1rem}.gallery-feature-video{width:100%}}
