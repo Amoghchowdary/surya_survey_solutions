@@ -76,7 +76,7 @@ function HomePage() {
             sizes="100vw"
             type="image/webp"
           />
-          <img src={`${base}images/survey-hero-16k.jpg`} alt="" width={15360} height={8640} fetchPriority="high" className="home-hero-media" />
+          <img src={`${base}images/survey-hero-4k.webp`} alt="" width={3840} height={2160} fetchPriority="high" className="home-hero-media" />
         </picture>
         <div className="home-hero-overlay" aria-hidden="true" />
         <div className="home-hero-bottom-shade" aria-hidden="true" />

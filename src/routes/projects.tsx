@@ -124,7 +124,7 @@ function ProjectsPage() {
           </div>
 
           <p className="mt-5 max-w-4xl text-sm leading-6 text-muted-foreground">
-            This release includes every unique image and every supplied video from the project archive. Only exact byte-for-byte duplicate image copies are suppressed so the same file is not displayed twice.
+            This release includes every supplied image and every supplied video from the uploaded Project ZIP, organised under its project folder and optimised for web delivery.
           </p>
 
           <div className="projects-grid mt-8 grid gap-6 md:grid-cols-2">
