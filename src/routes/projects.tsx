@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Building2, CalendarDays, Images, MapPin, PlayCircle, Wrench } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { PageHero, ProjectCard, Stats } from "@/components/site-components";
+import { blockMediaContextMenu, blockMediaDrag } from "@/components/media-protection";
 import { projects, type Project, type ProjectMedia } from "@/lib/site-data";
 
 export const Route = createFileRoute("/projects")({
@@ -26,40 +27,56 @@ const filters = ["All Projects", "Amaravati", "Bheemaa", "Bengaluru", "Shamshaba
 function MediaTile({ media, project, index }: { media: ProjectMedia; project: Project; index: number }) {
   if (media.kind === "video") {
     return (
-      <figure className="project-media-tile project-media-video">
+      <figure
+        className="project-media-tile project-media-video protected-media"
+        onContextMenu={blockMediaContextMenu}
+      >
         <video
           controls
+          controlsList="nodownload noremoteplayback"
+          disablePictureInPicture
           autoPlay
           muted
           playsInline
           preload="metadata"
           poster={media.poster}
           aria-label={`${project.title} field video ${index + 1}`}
+          onContextMenu={blockMediaContextMenu}
+          onDragStart={blockMediaDrag}
         >
           <source src={media.src} type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
+        <figcaption className="project-media-caption">
+          <span className="project-media-sequence">{String(media.sequence).padStart(3, "0")}</span>
+          <span className="project-media-name">{media.originalName}</span>
+          <span className="project-media-kind">VIDEO</span>
+        </figcaption>
       </figure>
     );
   }
 
   return (
-    <figure className="project-media-tile">
-      <a
-        href={media.src}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={`Open ${project.title} project photograph`}
-      >
-        <img
-          src={media.src}
-          alt={`${project.title} project fieldwork photograph`}
-          width={1200}
-          height={900}
-          loading="lazy"
-          decoding="async"
-        />
-      </a>
+    <figure
+      className="project-media-tile protected-media"
+      onContextMenu={blockMediaContextMenu}
+    >
+      <img
+        src={media.src}
+        alt={`${project.title} project fieldwork photograph`}
+        width={1200}
+        height={900}
+        loading="lazy"
+        decoding="async"
+        draggable={false}
+        onContextMenu={blockMediaContextMenu}
+        onDragStart={blockMediaDrag}
+      />
+      <figcaption className="project-media-caption">
+        <span className="project-media-sequence">{String(media.sequence).padStart(3, "0")}</span>
+        <span className="project-media-name">{media.originalName}</span>
+        <span className="project-media-kind">IMAGE</span>
+      </figcaption>
     </figure>
   );
 }
@@ -124,7 +141,7 @@ function ProjectsPage() {
           </div>
 
           <p className="mt-5 max-w-4xl text-sm leading-6 text-muted-foreground">
-            This release includes every supplied image and every supplied video from the uploaded Project ZIP, organised under its project folder and optimised for web delivery.
+            Client-priority ordering is preserved exactly from the supplied project folders. The sequence number shown on every media title card comes from the client filename; videos remain in their numbered positions, and source-number gaps are not renumbered.
           </p>
 
           <div className="projects-grid mt-8 grid gap-6 md:grid-cols-2">
@@ -145,13 +162,21 @@ function ProjectsPage() {
         {selected && (
           <DialogContent className="project-dialog max-h-[94vh] max-w-6xl overflow-y-auto p-0">
             {selected.slug !== "bheemaa-amaravati-gad-tower" && (
-              <img
-                src={selected.image}
-                alt={`${selected.title} fieldwork cover`}
-                width={1800}
-                height={1200}
-                className="project-dialog-hero aspect-[16/8] w-full object-cover"
-              />
+              <div
+                className="protected-media project-dialog-hero-wrap"
+                onContextMenu={blockMediaContextMenu}
+              >
+                <img
+                  src={selected.image}
+                  alt={`${selected.title} fieldwork cover`}
+                  width={1800}
+                  height={1200}
+                  draggable={false}
+                  onContextMenu={blockMediaContextMenu}
+                  onDragStart={blockMediaDrag}
+                  className="project-dialog-hero aspect-[16/8] w-full object-cover"
+                />
+              </div>
             )}
             <div className={`project-dialog-body p-5 md:p-8 ${selected.slug === "bheemaa-amaravati-gad-tower" ? "pt-8 md:pt-10" : ""}`}>
               <DialogHeader>

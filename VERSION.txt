@@ -1,3 +1,2 @@
-Surya Survey Solutions V16
-Version: 16.0.0
-Project image and naming corrections release.
+Surya Survey Solutions V20
+Version: 20.0.0

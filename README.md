@@ -1,3 +1,7 @@
+# V20 deployment note
+
+V20 preserves existing public assets during Robocopy. Use `scripts\robocopy-to-deploy.ps1`; it mirrors application code while copying `public` additively without `/MIR` or `/PURGE` on public assets.
+
 # Surya Survey Solutions V6
 
 Production website for **Surya Survey Solutions**, a civil-engineering surveying business.

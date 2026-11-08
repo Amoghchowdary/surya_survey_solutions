@@ -1785,3 +1785,84 @@
 /* V17 celebrations gallery */
 .gallery-photo{border-radius:.35rem}.gallery-photo img{display:block}.gallery-feature-video video{display:block;max-height:70vh;object-fit:contain;background:#000}.gallery-lightbox button{color:#fff}
 @media(max-width:767px){.gallery-summary>div{padding:1rem}.gallery-feature-video{width:100%}}
+
+
+/* ------------------------------------------------------------------
+   V17 — protected public media
+   Removes casual save/open-original affordances and visibly watermarks
+   project/gallery media. This is deterrence, not DRM.
+------------------------------------------------------------------- */
+.protected-media {
+  position: relative;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.protected-media > img:not(.media-watermark),
+.protected-media > video {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.media-watermark {
+  position: absolute;
+  z-index: 15;
+  left: 50%;
+  top: 50%;
+  width: clamp(92px, 20%, 190px) !important;
+  height: auto !important;
+  max-height: 52% !important;
+  transform: translate(-50%, -50%);
+  object-fit: contain !important;
+  pointer-events: none !important;
+  user-select: none;
+  opacity: 0.24;
+  filter: drop-shadow(0 2px 8px rgb(0 0 0 / 0.24));
+  transition: none !important;
+}
+
+.media-watermark-compact {
+  width: clamp(68px, 22%, 132px) !important;
+  max-height: 48% !important;
+  opacity: 0.22;
+}
+
+.project-card:hover .media-watermark,
+.gallery-photo:hover .media-watermark {
+  transform: translate(-50%, -50%) !important;
+}
+
+.project-dialog-hero-wrap {
+  width: 100%;
+}
+
+/* Keep watermark above the picture but below native video controls where possible. */
+.project-media-video .media-watermark,
+.gallery-video-grid .media-watermark {
+  top: 44%;
+}
+
+@media (max-width: 640px) {
+  .media-watermark {
+    width: clamp(72px, 24%, 120px) !important;
+    opacity: 0.25;
+  }
+
+  .media-watermark-compact {
+    width: clamp(58px, 24%, 96px) !important;
+  }
+}
+
+
+/* V19 exact client media order title cards */
+.project-media-tile{background:hsl(var(--card));border:1px solid hsl(var(--border));}
+.project-media-tile>img,.project-media-tile>video{display:block;width:100%;background:#000;}
+.project-media-caption{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.55rem;padding:.6rem .65rem;border-top:1px solid hsl(var(--border));background:hsl(var(--background));font-size:.72rem;line-height:1.25;}
+.project-media-sequence{font-weight:800;color:hsl(var(--primary));font-variant-numeric:tabular-nums;}
+.project-media-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:hsl(var(--foreground));font-weight:600;}
+.project-media-kind{font-size:.62rem;font-weight:800;letter-spacing:.04em;color:hsl(var(--muted-foreground));}
+@media(max-width:640px){.project-media-caption{grid-template-columns:auto 1fr;}.project-media-kind{display:none;}.project-media-name{font-size:.68rem;}}
