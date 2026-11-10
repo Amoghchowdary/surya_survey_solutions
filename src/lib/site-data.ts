@@ -19,6 +19,7 @@ export const clientLogos: ClientLogo[] = [
   { name: "Yashoda Infra Developers", src: asset("images/client-logos/yashoda-infra-developers.png"), alt: "Yashoda Infra Developers logo", projectSlug: "yashoda-villa-site" },
   { name: "Bheemaa Infra Solutions Pvt. Ltd.", src: asset("images/client-logos/bheemaa-infra-solutions.png"), alt: "Bheemaa Infra Solutions Private Limited logo", projectSlug: "bheemaa-amaravati-gad-tower" },
   { name: "Greater Infra", src: asset("images/client-logos/greater-infra.png"), alt: "Greater Infra logo", projectSlug: "greater-infra-apartments-project" },
+  { name: "Srihitha Infra", src: asset("images/client-logos/srihitha-infra.png"), alt: "Srihitha Infra logo" },
   { name: "Sri Eswar Ram", src: asset("images/client-logos/sri-eswar-ram.png"), alt: "Sri Eswar Ram logo" },
 ];
 export const services = [

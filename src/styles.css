@@ -1866,3 +1866,18 @@
 .project-media-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:hsl(var(--foreground));font-weight:600;}
 .project-media-kind{font-size:.62rem;font-weight:800;letter-spacing:.04em;color:hsl(var(--muted-foreground));}
 @media(max-width:640px){.project-media-caption{grid-template-columns:auto 1fr;}.project-media-kind{display:none;}.project-media-name{font-size:.68rem;}}
+
+
+/* V21 — compact ordered project media, clean numbering on-media, bold top-left Surya mark */
+.project-complete-media{align-items:stretch!important;grid-auto-flow:row;gap:.4rem!important;}
+.project-media-tile{position:relative;margin:0!important;min-width:0;overflow:hidden;border:1px solid hsl(var(--border));border-radius:.35rem;background:#06111a;}
+.project-media-visual{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#06111a;}
+.project-media-visual>img:not(.media-watermark),.project-media-visual>video{display:block;width:100%!important;height:100%!important;object-fit:contain!important;background:#06111a;}
+.project-media-caption{display:none!important;}
+.project-media-number{position:absolute;z-index:25;right:.45rem;top:.45rem;display:grid;min-width:1.9rem;height:1.9rem;place-items:center;border:1px solid rgba(255,255,255,.38);border-radius:.35rem;background:rgba(5,17,28,.88);padding:0 .45rem;color:#fff;font-size:.84rem;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;box-shadow:0 3px 12px rgba(0,0,0,.3);}
+.media-corner-logo{position:absolute;z-index:24;left:.45rem;top:.45rem;display:grid;width:4.6rem;height:4.6rem;place-items:center;border-radius:50%;background:rgba(2,10,18,.88);padding:.22rem;box-shadow:0 3px 14px rgba(0,0,0,.4);pointer-events:none;user-select:none;}
+.media-corner-logo img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;filter:contrast(1.12) saturate(1.04) drop-shadow(0 1px 1px rgba(0,0,0,.35));}
+.media-corner-logo-compact{width:4.15rem;height:4.15rem;padding:.18rem;}
+.project-card .media-corner-logo{left:.7rem;top:.7rem;width:4.35rem;height:4.35rem;background:rgba(2,10,18,.9);}
+.project-media-video video{object-fit:contain!important;}
+@media(max-width:767px){.project-complete-media{gap:.32rem!important;}.media-corner-logo-compact{width:3.15rem;height:3.15rem;}.project-media-number{right:.3rem;top:.3rem;min-width:1.55rem;height:1.55rem;padding:0 .32rem;font-size:.72rem;}.project-card .media-corner-logo{width:3.4rem;height:3.4rem;}}

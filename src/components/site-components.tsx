@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { clientLogos, stats, type Project } from "@/lib/site-data";
-import { blockMediaContextMenu, blockMediaDrag } from "@/components/media-protection";
+import { MediaCornerLogo, blockMediaContextMenu, blockMediaDrag } from "@/components/media-protection";
 
 export function SectionHeading({ eyebrow, title, text, light = false }: { eyebrow?: string; title: string; text?: string; light?: boolean }) {
   return <div className="section-heading max-w-3xl"><div className={`mb-4 flex items-center gap-3 text-xs font-extrabold uppercase ${light ? "text-accent" : "text-primary"}`}><span className="h-px w-8 bg-accent"/>{eyebrow}</div><h2 className={`section-heading-title text-3xl font-extrabold leading-tight md:text-5xl ${light ? "text-hero-foreground" : "text-foreground"}`}>{title}</h2>{text && <p className={`section-heading-text mt-5 max-w-2xl text-base leading-7 ${light ? "text-hero-foreground/70" : "text-muted-foreground"}`}>{text}</p>}</div>
@@ -41,7 +41,7 @@ export function ClientLogoMarquee() {
               {clientLogos.map((logo) => {
                 const href = logo.projectSlug
                   ? `${base}projects#project-${logo.projectSlug}`
-                  : `${base}projects#projects-gallery`;
+                  : `${base}projects#projects`;
 
                 return (
                   <a
@@ -49,7 +49,7 @@ export function ClientLogoMarquee() {
                     className="client-logo-card client-logo-link"
                     key={`${copy}-${logo.name}`}
                     tabIndex={copy === 1 ? -1 : undefined}
-                    aria-label={copy === 0 ? `View project gallery for ${logo.name}` : undefined}
+                    aria-label={copy === 0 ? `View projects for ${logo.name}` : undefined}
                   >
                     <img src={logo.src} alt={copy === 0 ? logo.alt : ""} width={240} height={110} loading="lazy" />
                     <span className="client-logo-name">{logo.name}</span>
@@ -82,7 +82,8 @@ export function ProjectCard({ project, onOpen }: { project: Project; onOpen?: (p
           onDragStart={blockMediaDrag}
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <span className="absolute left-4 top-4 z-20 bg-hero px-3 py-1 text-[10px] font-extrabold text-hero-foreground">{project.status}</span>
+        <MediaCornerLogo compact />
+        <span className="absolute right-4 top-4 z-20 bg-hero px-3 py-1 text-[10px] font-extrabold text-hero-foreground">{project.status}</span>
       </div>
       <div className="border border-t-0 border-border bg-card p-5">
         <div className="mb-3 flex items-center justify-between gap-3">

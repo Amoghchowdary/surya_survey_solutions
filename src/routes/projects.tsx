@@ -3,16 +3,16 @@ import { useEffect, useMemo, useState } from "react";
 import { Building2, CalendarDays, Images, MapPin, PlayCircle, Wrench } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { PageHero, ProjectCard, Stats } from "@/components/site-components";
-import { blockMediaContextMenu, blockMediaDrag } from "@/components/media-protection";
+import { MediaCornerLogo, blockMediaContextMenu, blockMediaDrag } from "@/components/media-protection";
 import { projects, type Project, type ProjectMedia } from "@/lib/site-data";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Project Gallery | Surya Survey Solutions" },
-      { name: "description", content: "Explore the complete supplied project photo and video library from Surya Survey Solutions fieldwork across Amaravati, Bheemaa, Greater Infra and Yashoda project sites." },
-      { property: "og:title", content: "Survey Project Gallery | Surya Survey Solutions" },
-      { property: "og:description", content: "Civil engineering survey photographs, field measurement evidence and project videos supplied from real project sites." },
+      { title: "Projects | Surya Survey Solutions" },
+      { name: "description", content: "Explore Surya Survey Solutions project fieldwork across Amaravati, Bheemaa, Greater Infra and Yashoda project sites." },
+      { property: "og:title", content: "Survey Projects | Surya Survey Solutions" },
+      { property: "og:description", content: "Civil engineering survey projects with field measurement evidence, photographs and project videos from real sites." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/projects" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -25,33 +25,33 @@ export const Route = createFileRoute("/projects")({
 const filters = ["All Projects", "Amaravati", "Bheemaa", "Bengaluru", "Shamshabad", "Greater Infra", "Yashoda", "Residential", "Industrial"];
 
 function MediaTile({ media, project, index }: { media: ProjectMedia; project: Project; index: number }) {
+  const displayNumber = index + 1;
+
   if (media.kind === "video") {
     return (
       <figure
         className="project-media-tile project-media-video protected-media"
         onContextMenu={blockMediaContextMenu}
       >
-        <video
-          controls
-          controlsList="nodownload noremoteplayback"
-          disablePictureInPicture
-          autoPlay
-          muted
-          playsInline
-          preload="metadata"
-          poster={media.poster}
-          aria-label={`${project.title} field video ${index + 1}`}
-          onContextMenu={blockMediaContextMenu}
-          onDragStart={blockMediaDrag}
-        >
-          <source src={media.src} type="video/mp4" />
-          Your browser does not support HTML5 video.
-        </video>
-        <figcaption className="project-media-caption">
-          <span className="project-media-sequence">{String(media.sequence).padStart(3, "0")}</span>
-          <span className="project-media-name">{media.originalName}</span>
-          <span className="project-media-kind">VIDEO</span>
-        </figcaption>
+        <div className="project-media-visual">
+          <video
+            controls
+            controlsList="nodownload noremoteplayback"
+            disablePictureInPicture
+            muted
+            playsInline
+            preload="metadata"
+            poster={media.poster}
+            aria-label={`${project.title} field video ${displayNumber}`}
+            onContextMenu={blockMediaContextMenu}
+            onDragStart={blockMediaDrag}
+          >
+            <source src={media.src} type="video/mp4" />
+            Your browser does not support HTML5 video.
+          </video>
+          <MediaCornerLogo compact />
+          <span className="project-media-number" aria-hidden="true">{displayNumber}</span>
+        </div>
       </figure>
     );
   }
@@ -61,22 +61,21 @@ function MediaTile({ media, project, index }: { media: ProjectMedia; project: Pr
       className="project-media-tile protected-media"
       onContextMenu={blockMediaContextMenu}
     >
-      <img
-        src={media.src}
-        alt={`${project.title} project fieldwork photograph`}
-        width={1200}
-        height={900}
-        loading="lazy"
-        decoding="async"
-        draggable={false}
-        onContextMenu={blockMediaContextMenu}
-        onDragStart={blockMediaDrag}
-      />
-      <figcaption className="project-media-caption">
-        <span className="project-media-sequence">{String(media.sequence).padStart(3, "0")}</span>
-        <span className="project-media-name">{media.originalName}</span>
-        <span className="project-media-kind">IMAGE</span>
-      </figcaption>
+      <div className="project-media-visual">
+        <img
+          src={media.src}
+          alt={`${project.title} project fieldwork photograph ${displayNumber}`}
+          width={1200}
+          height={900}
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+          onContextMenu={blockMediaContextMenu}
+          onDragStart={blockMediaDrag}
+        />
+        <MediaCornerLogo compact />
+        <span className="project-media-number" aria-hidden="true">{displayNumber}</span>
+      </div>
     </figure>
   );
 }
@@ -128,7 +127,7 @@ function ProjectsPage() {
 
       <div className="page-wrap pt-14"><Stats compact /></div>
 
-      <section id="projects-gallery" className="section-pad scroll-mt-28 pt-14">
+      <section id="projects" className="section-pad scroll-mt-28 pt-14">
         <div className="page-wrap">
           <div className="project-filters flex flex-wrap gap-2" role="group" aria-label="Filter projects">
             {filters.map((item) => (
@@ -141,7 +140,7 @@ function ProjectsPage() {
           </div>
 
           <p className="mt-5 max-w-4xl text-sm leading-6 text-muted-foreground">
-            Client-priority ordering is preserved exactly from the supplied project folders. The sequence number shown on every media title card comes from the client filename; videos remain in their numbered positions, and source-number gaps are not renumbered.
+            Client-priority ordering is preserved exactly from the supplied project folders. Images and videos remain in the exact client-defined order. The small number shown on each media tile is only a clean visual position marker; it does not change the underlying client sequence.
           </p>
 
           <div className="projects-grid mt-8 grid gap-6 md:grid-cols-2">
@@ -196,7 +195,7 @@ function ProjectsPage() {
 
               <div className="mt-8 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <h3 className="text-sm font-bold uppercase">Complete Project Media</h3>
+                  <h3 className="text-sm font-bold uppercase">Project Media</h3>
                   <p className="mt-1 text-xs text-muted-foreground">Source folder: {selected.sourceAlbum}</p>
                 </div>
                 <span className="text-xs font-semibold text-muted-foreground">
@@ -204,7 +203,7 @@ function ProjectsPage() {
                 </span>
               </div>
 
-              <div className="project-complete-media mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+              <div className="project-complete-media mt-4 grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:grid-cols-4">
                 {selected.media.map((media, index) => <MediaTile media={media} project={selected} index={index} key={`${selected.slug}-${media.kind}-${index}`} />)}
               </div>
             </div>
