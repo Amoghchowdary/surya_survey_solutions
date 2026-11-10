@@ -1,2 +1,2 @@
-Surya Survey Solutions V21
-Version: 21.0.0
+Surya Survey Solutions V22
+Version: 22.0.0

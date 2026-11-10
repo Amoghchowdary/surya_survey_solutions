@@ -1881,3 +1881,14 @@
 .project-card .media-corner-logo{left:.7rem;top:.7rem;width:4.35rem;height:4.35rem;background:rgba(2,10,18,.9);}
 .project-media-video video{object-fit:contain!important;}
 @media(max-width:767px){.project-complete-media{gap:.32rem!important;}.media-corner-logo-compact{width:3.15rem;height:3.15rem;}.project-media-number{right:.3rem;top:.3rem;min-width:1.55rem;height:1.55rem;padding:0 .32rem;font-size:.72rem;}.project-card .media-corner-logo{width:3.4rem;height:3.4rem;}}
+
+
+/* V22 layered project-media protection */
+.media-security{position:absolute;inset:0;z-index:28;pointer-events:none;overflow:hidden;user-select:none;}
+.media-security-logo{position:absolute;left:.45rem;top:.45rem;width:4.45rem;height:4.45rem;display:grid;place-items:center;border-radius:.6rem;background:rgba(0,0,0,.86);padding:.24rem;box-shadow:0 3px 14px rgba(0,0,0,.55);}
+.media-security-logo img{width:100%!important;height:100%!important;object-fit:contain!important;filter:contrast(1.22) saturate(1.05);}
+.media-security-phone{position:absolute;right:.45rem;top:.45rem;background:rgba(0,0,0,.82);color:#fff;padding:.38rem .55rem;border-radius:.3rem;font-size:.78rem;font-weight:900;letter-spacing:.04em;text-shadow:0 1px 2px #000;}
+.media-security-number{position:absolute;right:.45rem;bottom:.45rem;min-width:2.15rem;height:2.15rem;display:grid;place-items:center;background:rgba(0,0,0,.86);color:#fff;border:1px solid rgba(255,255,255,.58);border-radius:.35rem;padding:0 .5rem;font-size:.86rem;font-weight:900;}
+.media-security-band{position:absolute;left:-18%;width:136%;text-align:center;color:rgba(255,255,255,.24);font-size:.72rem;font-weight:900;letter-spacing:.12em;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.65);transform:rotate(-16deg);}
+.media-security-band-a{top:42%;}.media-security-band-b{top:61%;transform:rotate(14deg);}
+@media(max-width:767px){.media-security-logo{width:3.15rem;height:3.15rem;left:.3rem;top:.3rem;padding:.16rem}.media-security-phone{right:.3rem;top:.3rem;font-size:.62rem;padding:.28rem .4rem}.media-security-number{right:.3rem;bottom:.3rem;min-width:1.7rem;height:1.7rem;font-size:.72rem}.media-security-band{font-size:.54rem}}

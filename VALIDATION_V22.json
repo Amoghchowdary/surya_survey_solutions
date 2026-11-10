@@ -1,0 +1,16 @@
+{
+  "version": "22.0.0",
+  "status": "PASS",
+  "projects": 7,
+  "mallampet_media": 188,
+  "mallampet_images": 187,
+  "mallampet_videos": 1,
+  "mallampet_video_source_sequence": 60,
+  "duplicate_source_sequence_97": 2,
+  "asset_references_checked": 701,
+  "missing_assets": 0,
+  "zero_byte_files": 0,
+  "project_images_verified": 671,
+  "project_videos_verified": 12,
+  "temp_media_files": 0
+}

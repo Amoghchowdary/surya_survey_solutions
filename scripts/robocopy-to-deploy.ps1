@@ -15,7 +15,7 @@ if ([string]::IsNullOrWhiteSpace($Deploy)) {
 
 Write-Host "Source: $Source"
 Write-Host "Deploy: $Deploy"
-Write-Host "V21 deployment mode: code mirror + additive public assets (NO public purge)."
+Write-Host "V22 deployment mode: code mirror + additive public assets (NO public purge)."
 
 if (-not (Test-Path $Deploy)) {
     throw "Deployment folder was not found at: $Deploy"
@@ -52,7 +52,7 @@ if ($publicCode -ge 8) {
     throw "Public-assets Robocopy failed with exit code $publicCode"
 }
 
-Write-Host "V21 Robocopy completed successfully."
+Write-Host "V22 Robocopy completed successfully."
 Write-Host "Application copy code: $code"
 Write-Host "Public-assets copy code: $publicCode"
 Write-Host "Public assets were copied/updated without deletion."
