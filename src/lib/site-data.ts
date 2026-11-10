@@ -14,7 +14,7 @@ export const stats = [
 ];
 export type ClientLogo = { name: string; src: string; alt: string; projectSlug?: string; };
 export const clientLogos: ClientLogo[] = [
-  { name: "Advaita Properties", src: asset("images/client-logos/advaita-properties.png"), alt: "Advaita Properties logo" },
+  { name: "Advaita Properties", src: asset("images/client-logos/advaita-properties.png"), alt: "Advaita Properties logo", projectSlug: "advaita-properties-site" },
   { name: "Sri Lakshmi Developers", src: asset("images/client-logos/sri-lakshmi-developers.png"), alt: "Sri Lakshmi Developers logo" },
   { name: "Yashoda Infra Developers", src: asset("images/client-logos/yashoda-infra-developers.png"), alt: "Yashoda Infra Developers logo", projectSlug: "yashoda-villa-site" },
   { name: "Bheemaa Infra Solutions Pvt. Ltd.", src: asset("images/client-logos/bheemaa-infra-solutions.png"), alt: "Bheemaa Infra Solutions Private Limited logo", projectSlug: "bheemaa-amaravati-gad-tower" },
@@ -830,4 +830,34 @@ export const projects: Project[] = [
       { kind: "image", src: asset("images/projects/mallampet-site/187-hundred-eighty-187.webp"), originalName: "hundred eighty 187.jpeg" , sequence: 187 },
     ],
   },
+  {
+    id: 8,
+    slug: "advaita-properties-site",
+    title: "Advaita Properties Site Survey",
+    client: "Advaita Properties",
+    location: "Location not specified in supplied folder",
+    type: "Site Survey",
+    status: "FIELDWORK",
+    year: "2026",
+    description: "Advaita Properties site media supplied by the client and preserved in the exact numbered order provided in the uploaded project folder.",
+    scope: "Twelve client-supplied site images displayed in the exact 1-to-12 sequence without reordering or omission.",
+    equipment: "Survey fieldwork and site documentation visible in the supplied Advaita Properties project images.",
+    sourceAlbum: "ADVAITA PROPERTIES SITE",
+    image: asset("images/projects/advaita-properties-site/001-first-1.webp"),
+    media: [
+      { kind: "image", src: asset("images/projects/advaita-properties-site/001-first-1.webp"), originalName: "first 1.jpeg", sequence: 1 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/002-second-2.webp"), originalName: "second 2 .jpeg", sequence: 2 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/003-three-3.webp"), originalName: "three 3.jpeg", sequence: 3 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/004-four-4.webp"), originalName: "four 4 .jpeg", sequence: 4 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/005-five-5.webp"), originalName: "five 5 .jpeg", sequence: 5 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/006-six-6.webp"), originalName: "six 6 .jpeg", sequence: 6 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/007-seven-7.webp"), originalName: "seven 7 .jpeg", sequence: 7 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/008-eight-8.webp"), originalName: "eight 8.jpeg", sequence: 8 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/009-nine-9.webp"), originalName: "nine 9 .jpeg", sequence: 9 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/010-ten-10.webp"), originalName: "ten 10 .jpeg", sequence: 10 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/011-eleven-11.webp"), originalName: "eleven 11.jpeg", sequence: 11 },
+      { kind: "image", src: asset("images/projects/advaita-properties-site/012-tweleve-12.webp"), originalName: "tweleve 12.jpeg", sequence: 12 },
+    ],
+  },
+
 ];

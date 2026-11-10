@@ -1,0 +1,25 @@
+# V23 Validation
+
+- **version**: 23.0.0
+- **projects**: 8
+- **project_media_images**: 671
+- **project_media_videos**: 12
+- **project_media_total**: 683
+- **project_asset_refs**: 703
+- **unique_project_asset_refs**: 695
+- **missing_refs**: 0
+- **zero_referenced_assets**: 0
+- **decoded_images**: 683
+- **bad_images**: 0
+- **probed_videos**: 12
+- **bad_videos**: 0
+- **advaita_images**: 12
+- **advaita_sequence**: 1-12
+- **protection_number**: 703692959
+- **old_number_text_refs**: 0
+- **existing_v22_project_data_unchanged**: True
+- **temp_files**: 0
+- **unexpected_zero_byte_files**: 0
+- **deploy_feed_present**: True
+- **deploy_public_additive**: True
+- **deploy_app_mirror**: True

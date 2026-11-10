@@ -1,6 +1,6 @@
 import type { DragEvent, MouseEvent } from "react";
 
-const PHONE = "8341889762";
+const PHONE = "703692959";
 
 export function MediaWatermark({ compact = false }: { compact?: boolean }) {
   const src = `${import.meta.env.BASE_URL}images/brand/surya-watermark-tm.png`;
