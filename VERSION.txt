@@ -1,2 +1,2 @@
-Surya Survey Solutions V26
-Version: 26.0.0
+Surya Survey Solutions V27
+Version: 27.0.0
