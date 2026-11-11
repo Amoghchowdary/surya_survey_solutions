@@ -1,2 +1,2 @@
-Surya Survey Solutions V23
-Version: 23.0.0
+Surya Survey Solutions V24
+Version: 24.0.0
