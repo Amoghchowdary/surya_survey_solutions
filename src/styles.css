@@ -733,7 +733,7 @@
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: client-logo-scroll-ltr 32s linear infinite;
+  animation: client-logo-scroll-v26 34s linear 5s infinite;
 }
 .client-logo-group {
   display: flex;
@@ -767,9 +767,9 @@
 .client-logo-card:hover img {
   transform: scale(1.035);
 }
-@keyframes client-logo-scroll-ltr {
-  from { transform: translate3d(-50%, 0, 0); }
-  to { transform: translate3d(0, 0, 0); }
+@keyframes client-logo-scroll-v26 {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 @media (max-width: 767px) {
@@ -1892,3 +1892,55 @@
 .media-security-band{position:absolute;left:-18%;width:136%;text-align:center;color:rgba(255,255,255,.24);font-size:.72rem;font-weight:900;letter-spacing:.12em;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.65);transform:rotate(-16deg);}
 .media-security-band-a{top:42%;}.media-security-band-b{top:61%;transform:rotate(14deg);}
 @media(max-width:767px){.media-security-logo{width:3.15rem;height:3.15rem;left:.3rem;top:.3rem;padding:.16rem}.media-security-phone{right:.3rem;top:.3rem;font-size:.62rem;padding:.28rem .4rem}.media-security-number{right:.3rem;bottom:.3rem;min-width:1.7rem;height:1.7rem;font-size:.72rem}.media-security-band{font-size:.54rem}}
+
+
+/* V26 — Mahitha Projects rail visibility correction */
+.client-logo-card--mahitha img {
+  object-fit: contain;
+  opacity: 1;
+}
+
+
+/* V27 — Mahitha Projects is permanently visible as the lead card in the same logo rail. */
+.client-logo-rail-layout {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+  padding-left: clamp(.75rem, 2.4vw, 2.5rem);
+}
+.client-logo-pinned-wrap {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 5;
+}
+.client-logo-card--pinned {
+  border-color: #d7e0e8;
+  box-shadow: 0 10px 28px rgba(15,23,42,.08);
+}
+.client-logo-card--pinned img {
+  object-fit: contain;
+  filter: none;
+  opacity: 1;
+}
+.client-logo-rail-layout .client-logo-marquee {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.client-logo-rail-layout .client-logo-track {
+  animation: client-logo-scroll-v27 34s linear infinite;
+}
+@keyframes client-logo-scroll-v27 {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@media (max-width: 767px) {
+  .client-logo-rail-layout {
+    gap: .65rem;
+    padding-left: .75rem;
+  }
+  .client-logo-rail-layout .client-logo-track {
+    animation-duration: 25s;
+  }
+}

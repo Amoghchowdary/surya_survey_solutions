@@ -23,6 +23,34 @@ export function Stats({ compact = false }: { compact?: boolean }) {
 
 export function ClientLogoMarquee() {
   const base = import.meta.env.BASE_URL;
+  const mahithaLogo = clientLogos.find((logo) => logo.name === "Mahitha Projects");
+  const scrollingClientLogos = clientLogos.filter((logo) => logo.name !== "Mahitha Projects");
+
+  const renderLogoCard = (logo: (typeof clientLogos)[number], copy: number, pinned = false) => {
+    const href = logo.projectSlug
+      ? `${base}projects#project-${logo.projectSlug}`
+      : `${base}projects#projects`;
+
+    return (
+      <a
+        href={href}
+        className={`client-logo-card client-logo-link ${pinned ? "client-logo-card--mahitha client-logo-card--pinned" : ""}`}
+        data-client-logo={logo.name === "Mahitha Projects" ? "mahitha-projects" : undefined}
+        key={`${pinned ? "pinned" : copy}-${logo.name}`}
+        tabIndex={!pinned && copy === 1 ? -1 : undefined}
+        aria-label={pinned || copy === 0 ? `View projects for ${logo.name}` : undefined}
+      >
+        <img
+          src={logo.src}
+          alt={pinned || copy === 0 ? logo.alt : ""}
+          width={240}
+          height={110}
+          loading={pinned ? "eager" : "lazy"}
+        />
+        <span className="client-logo-name">{logo.name}</span>
+      </a>
+    );
+  };
 
   return (
     <section className="client-logo-section" aria-labelledby="client-logo-heading">
@@ -34,30 +62,21 @@ export function ClientLogoMarquee() {
         <p className="client-logo-note">Select a company to open available project evidence and field photographs.</p>
       </div>
 
-      <div className="client-logo-marquee" role="region" aria-label="Previously worked with company logos">
-        <div className="client-logo-track">
-          {[0, 1].map((copy) => (
-            <div className="client-logo-group" aria-hidden={copy === 1} key={copy}>
-              {clientLogos.map((logo) => {
-                const href = logo.projectSlug
-                  ? `${base}projects#project-${logo.projectSlug}`
-                  : `${base}projects#projects`;
+      <div className="client-logo-rail-layout" role="region" aria-label="Previously worked with company logos">
+        {mahithaLogo && (
+          <div className="client-logo-pinned-wrap">
+            {renderLogoCard(mahithaLogo, 0, true)}
+          </div>
+        )}
 
-                return (
-                  <a
-                    href={href}
-                    className="client-logo-card client-logo-link"
-                    key={`${copy}-${logo.name}`}
-                    tabIndex={copy === 1 ? -1 : undefined}
-                    aria-label={copy === 0 ? `View projects for ${logo.name}` : undefined}
-                  >
-                    <img src={logo.src} alt={copy === 0 ? logo.alt : ""} width={240} height={110} loading="lazy" />
-                    <span className="client-logo-name">{logo.name}</span>
-                  </a>
-                );
-              })}
-            </div>
-          ))}
+        <div className="client-logo-marquee" aria-label="Continuously scrolling company logos">
+          <div className="client-logo-track">
+            {[0, 1].map((copy) => (
+              <div className="client-logo-group" aria-hidden={copy === 1} key={copy}>
+                {scrollingClientLogos.map((logo) => renderLogoCard(logo, copy))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -14,6 +14,7 @@ export const stats = [
 ];
 export type ClientLogo = { name: string; src: string; alt: string; projectSlug?: string; };
 export const clientLogos: ClientLogo[] = [
+  { name: "Mahitha Projects", src: asset("images/client-logos/mahitha-projects.png"), alt: "Mahitha Projects logo" },
   { name: "Advaita Properties", src: asset("images/client-logos/advaita-properties.png"), alt: "Advaita Properties logo", projectSlug: "advaita-properties-site" },
   { name: "Sri Lakshmi Developers", src: asset("images/client-logos/sri-lakshmi-developers.png"), alt: "Sri Lakshmi Developers logo" },
   { name: "Yashoda Infra Developers", src: asset("images/client-logos/yashoda-infra-developers.png"), alt: "Yashoda Infra Developers logo", projectSlug: "yashoda-villa-site" },
