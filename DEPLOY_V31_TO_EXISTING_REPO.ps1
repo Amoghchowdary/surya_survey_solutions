@@ -3,4 +3,4 @@ $Source = $PSScriptRoot
 Set-ExecutionPolicy -Scope Process Bypass -Force
 & (Join-Path $Source "scripts\robocopy-to-deploy.ps1") -Source $Source -Deploy $Deploy
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-Write-Host "V30 deployment feed copied successfully. Review git status before committing."
+Write-Host "V31 deployment feed copied successfully. Review git status before committing."

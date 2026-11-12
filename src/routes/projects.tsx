@@ -10,7 +10,7 @@ export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
       { title: "Projects | Surya Survey Solutions" },
-      { name: "description", content: "Explore Surya Survey Solutions project fieldwork across Amaravati, Bheemaa, Greater Infra, Yashoda, Mallampet, Advaita Properties and Shiva site at Balaji Nagar." },
+      { name: "description", content: "Explore Surya Survey Solutions project fieldwork across Amaravati, Bheemaa, Greater Infra, Yashoda, Sri Hita Infra at Mallampet, Advaita Properties and Mahitha Developers at Balaji Nagar." },
       { property: "og:title", content: "Survey Projects | Surya Survey Solutions" },
       { property: "og:description", content: "Civil engineering survey projects with field measurement evidence, photographs and project videos from real sites." },
       { property: "og:type", content: "website" },
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
-const filters = ["All Projects", "Amaravati", "Bheemaa", "Bengaluru", "Shamshabad", "Greater Infra", "Yashoda", "Mallampet", "Advaita", "Shiva", "Residential", "Industrial"];
+const filters = ["All Projects", "Amaravati", "Bheemaa", "Bengaluru", "Shamshabad", "Greater Infra", "Yashoda", "Sri Hita Infra", "Advaita", "Mahitha Developers", "Residential", "Industrial"];
 
 function MediaTile({ media, project, index }: { media: ProjectMedia; project: Project; index: number }) {
   const displayNumber = index + 1;
@@ -107,9 +107,9 @@ function ProjectsPage() {
     if (filter === "Shamshabad") return project.location.includes("Shamshabad");
     if (filter === "Greater Infra") return project.client === "Greater Infra";
     if (filter === "Yashoda") return project.client?.includes("Yashoda");
-    if (filter === "Mallampet") return project.slug === "mallampet-site";
+    if (filter === "Sri Hita Infra") return project.slug === "mallampet-site";
     if (filter === "Advaita") return project.slug === "advaita-properties-site";
-    if (filter === "Shiva") return project.slug === "shiva-site";
+    if (filter === "Mahitha Developers") return project.slug === "shiva-site";
     if (filter === "Residential") return project.type.includes("Residential");
     if (filter === "Industrial") return project.type.includes("Industrial");
     return true;
