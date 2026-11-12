@@ -6,6 +6,7 @@ import {
   DraftingCompass,
   Gauge,
   Map,
+  Plane,
   Ruler,
   Satellite,
   ScanLine,
@@ -46,7 +47,7 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const icons: LucideIcon[] = [Map, Crosshair, Satellite, ScanLine, DraftingCompass, Ruler, Target, Gauge];
+const icons: LucideIcon[] = [Map, Crosshair, Satellite, ScanLine, DraftingCompass, Ruler, Target, Gauge, Plane];
 const process = [
   "Understand Project Requirements",
   "Site Inspection & Reconnaissance",
@@ -124,7 +125,19 @@ function HomePage() {
             </ul>
             <Button asChild className="mt-8 bg-[#071d2f] text-white hover:bg-[#0b2d48]" size="lg"><Link to="/about">About Surya Survey Solutions <ArrowRight /></Link></Button>
           </div>
-          <div className="relative overflow-hidden bg-[#071d2f]"><img src={images.fieldImage} alt="Survey engineers collecting Total Station measurements on a civil construction site" width={1408} height={1008} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.02]" /></div>
+          <div className="relative overflow-hidden bg-[#071d2f]">
+            <video
+              className="aspect-[4/3] w-full object-cover"
+              src={`${base}videos/drone-surveying-home-v32.mp4`}
+              poster={`${base}videos/drone-surveying-home-v32.jpg`}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="Drone surveying field operations by Surya Survey Solutions"
+            />
+          </div>
         </div>
       </section>
 

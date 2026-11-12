@@ -32,6 +32,7 @@ export const services = [
   ["Road & Infrastructure", "Support for road alignment, levels, longitudinal sections, cross-sections and infrastructure development."],
   ["As-Built Survey", "Verification and documentation of constructed elements and their actual final positions."],
   ["Contour & Level Survey", "Elevation and terrain mapping supporting site development, drainage and earthwork planning."],
+  ["Drone Surveying", "Aerial site capture and drone-assisted survey support for terrain visibility, progress documentation and large-area project assessment."],
 ] as const;
 
 export type ProjectMedia = { kind: "image" | "video"; src: string; poster?: string; originalName: string; sequence: number; };
