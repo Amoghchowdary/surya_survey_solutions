@@ -10,7 +10,7 @@ export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
       { title: "Projects | Surya Survey Solutions" },
-      { name: "description", content: "Explore Surya Survey Solutions project fieldwork across Amaravati, Bheemaa, Greater Infra, Yashoda, Mallampet and Advaita Properties project sites." },
+      { name: "description", content: "Explore Surya Survey Solutions project fieldwork across Amaravati, Bheemaa, Greater Infra, Yashoda, Mallampet, Advaita Properties and Shiva site at Balaji Nagar." },
       { property: "og:title", content: "Survey Projects | Surya Survey Solutions" },
       { property: "og:description", content: "Civil engineering survey projects with field measurement evidence, photographs and project videos from real sites." },
       { property: "og:type", content: "website" },
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
-const filters = ["All Projects", "Amaravati", "Bheemaa", "Bengaluru", "Shamshabad", "Greater Infra", "Yashoda", "Mallampet", "Advaita", "Residential", "Industrial"];
+const filters = ["All Projects", "Amaravati", "Bheemaa", "Bengaluru", "Shamshabad", "Greater Infra", "Yashoda", "Mallampet", "Advaita", "Shiva", "Residential", "Industrial"];
 
 function MediaTile({ media, project, index }: { media: ProjectMedia; project: Project; index: number }) {
   const displayNumber = index + 1;
@@ -72,7 +72,6 @@ function MediaTile({ media, project, index }: { media: ProjectMedia; project: Pr
           onContextMenu={blockMediaContextMenu}
           onDragStart={blockMediaDrag}
         />
-        <MediaSecurityOverlay number={displayNumber} compact />
       </div>
     </figure>
   );
@@ -109,6 +108,7 @@ function ProjectsPage() {
     if (filter === "Yashoda") return project.client?.includes("Yashoda");
     if (filter === "Mallampet") return project.slug === "mallampet-site";
     if (filter === "Advaita") return project.slug === "advaita-properties-site";
+    if (filter === "Shiva") return project.slug === "shiva-site";
     if (filter === "Residential") return project.type.includes("Residential");
     if (filter === "Industrial") return project.type.includes("Industrial");
     return true;
@@ -175,7 +175,6 @@ function ProjectsPage() {
                   onDragStart={blockMediaDrag}
                   className="project-dialog-hero aspect-[16/8] w-full object-cover"
                 />
-                <MediaSecurityOverlay number={1} />
               </div>
             )}
             <div className={`project-dialog-body p-5 md:p-8 ${selected.slug === "bheemaa-amaravati-gad-tower" ? "pt-8 md:pt-10" : ""}`}>

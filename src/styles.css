@@ -1944,3 +1944,7 @@
     animation-duration: 25s;
   }
 }
+
+
+/* V28 — one Project identity line; Surya logo at top-right. */
+.media-security{position:absolute;inset:0;z-index:28;pointer-events:none;overflow:hidden;user-select:none}.media-security-logo{position:absolute;right:.45rem!important;left:auto!important;top:.45rem;width:4rem;height:4rem;display:grid;place-items:center;border-radius:.4rem;background:rgba(0,0,0,.25);padding:.16rem}.media-security-logo img{width:100%!important;height:100%!important;object-fit:contain!important}.media-security-line{position:absolute;left:50%;bottom:.4rem;transform:translateX(-50%);max-width:94%;white-space:nowrap;border-radius:.3rem;background:rgba(0,0,0,.72);padding:.32rem .56rem;color:#fff;font-size:.7rem;font-weight:900;letter-spacing:.03em}.media-security-phone,.media-security-number,.media-security-band{display:none!important}@media(max-width:767px){.media-security-logo{right:.3rem!important;top:.3rem;width:3rem;height:3rem}.media-security-line{bottom:.3rem;font-size:.52rem;padding:.25rem .38rem}}
