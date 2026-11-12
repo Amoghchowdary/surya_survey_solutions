@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { Camera, PlayCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { PageHero } from "@/components/site-components";
-import { MediaWatermark, blockMediaContextMenu, blockMediaDrag } from "@/components/media-protection";
+import { MediaSecurityOverlay, blockMediaContextMenu, blockMediaDrag } from "@/components/media-protection";
 import { celebrationMedia, type CelebrationMedia } from "@/lib/gallery-data";
 
 export const Route = createFileRoute("/gallery")({
@@ -58,7 +58,7 @@ function GalleryPage() {
               <source src={video.src} type="video/mp4"/>
               Your browser does not support HTML5 video.
             </video>
-            <MediaWatermark compact />
+            <MediaSecurityOverlay number={index + 1} compact />
           </div>)}
         </div>
       </div>}

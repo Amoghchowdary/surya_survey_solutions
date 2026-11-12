@@ -1,13 +1,10 @@
 import type { DragEvent, MouseEvent } from "react";
 
+/** V30 production: exactly one transparent identity line on protected media. */
 export function MediaSecurityOverlay({ number, compact = false }: { number: number; compact?: boolean }) {
-  const src = `${import.meta.env.BASE_URL}images/brand/surya-watermark-logo.png`;
   return (
     <span className={compact ? "media-security media-security-compact" : "media-security"} aria-hidden="true">
-      <span className="media-security-top-left">
-        <span className="media-security-logo"><img src={src} alt="" draggable={false} /></span>
-        <span className="media-security-line">SURYA SURVEY SOLUTIONS · {number}</span>
-      </span>
+      <span className="media-security-line">SURYA SURVEY SOLUTIONS · 703692959 · {number}</span>
     </span>
   );
 }
