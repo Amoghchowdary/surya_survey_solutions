@@ -72,6 +72,7 @@ function MediaTile({ media, project, index }: { media: ProjectMedia; project: Pr
           onContextMenu={blockMediaContextMenu}
           onDragStart={blockMediaDrag}
         />
+        <MediaSecurityOverlay number={displayNumber} compact />
       </div>
     </figure>
   );
