@@ -7,7 +7,7 @@
 - Final video: H.264, 1280x960, 31 seconds, no audio stream.
 - Poster image is included for loading/fallback.
 - Drone Surveying is present in the service capability data and has a matching homepage icon slot.
-- V31 Sri Hita Infra and Mahitha Developers project names remain present.
+- V31 Srihitha Infra and Mahitha Developers project names remain present.
 - GitHub Pages workflow label updated to V32.
 - V32 deployment script included.
 

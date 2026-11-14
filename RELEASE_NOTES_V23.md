@@ -6,7 +6,7 @@
 - Linked the existing Advaita Properties client-rail logo to the new project.
 
 ## Corrected protected-media number
-- Replaced the previous protected-media number with **703692959**.
+- Replaced the previous protected-media number with **7036892959**.
 - Project images were regenerated from clean pre-phone project media before applying the corrected security layer, so the previous phone number is not retained underneath the V23 image watermark.
 - V23 project images include the Surya logo, corrected number, changing per-item number, centre watermark, and repeated low-opacity identity bands.
 - Existing browser deterrents remain in place: right-click/drag blocking, `nodownload`, and Picture-in-Picture restrictions where supported.

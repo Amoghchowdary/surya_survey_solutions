@@ -4,7 +4,7 @@ import type { DragEvent, MouseEvent } from "react";
 export function MediaSecurityOverlay({ number, compact = false }: { number: number; compact?: boolean }) {
   return (
     <span className={compact ? "media-security media-security-compact" : "media-security"} aria-hidden="true">
-      <span className="media-security-line">SURYA SURVEY SOLUTIONS · 703692959 · {number}</span>
+      <span className="media-security-line">SURYA SURVEY SOLUTIONS · 7036892959 · {number}</span>
     </span>
   );
 }

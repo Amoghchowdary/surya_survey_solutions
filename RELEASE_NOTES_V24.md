@@ -7,6 +7,6 @@
 ## Preserved
 - All V23 projects and project ordering unchanged.
 - Mallampet and Advaita project media unchanged.
-- Protected-media watermarking and contact number 703692959 unchanged.
+- Protected-media watermarking and contact number 7036892959 unchanged.
 - Gallery remains separate and unchanged.
 - Existing client logos remain in the rail.
