@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ClientLogoMarquee, CtaBand, ProjectCard, SectionHeading, Stats } from "@/components/site-components";
+import { EquipmentCarousels } from "@/components/equipment-carousels";
 import { images, projects, services } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
@@ -146,6 +147,10 @@ function HomePage() {
           <SectionHeading eyebrow="Technical services" title="Our Surveying Capabilities" text="Professional field measurement and engineering survey support for planning, construction and verification." />
           <div className="services-grid mt-12 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
             {services.map(([name, desc], i) => { const Icon: LucideIcon = icons[i] ?? Map; return <article key={name} className="group bg-background p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"><Icon className="size-7 text-emerald-600" strokeWidth={1.6} /><div className="mt-8 text-xs font-bold text-emerald-600">0{i + 1}</div><h3 className="mt-2 text-lg font-bold">{name}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{desc}</p></article>; })}
+          </div>
+          <div className="mt-16 border-t border-border pt-12">
+            <SectionHeading eyebrow="Equipment gallery" title="Equipment Behind the Survey" text="Three continuously rotating equipment galleries from real field operations." />
+            <EquipmentCarousels className="mt-10" />
           </div>
         </div>
       </section>
