@@ -2330,3 +2330,66 @@
   .launch-time-unit strong { font-size: clamp(1.35rem, 8vw, 2rem); }
   .launch-time-unit-ms strong { font-size: clamp(1.15rem, 7vw, 1.75rem); }
 }
+
+/* V43 — four-unit countdown alignment fix */
+.launch-clock {
+  grid-template-columns:
+    minmax(84px, 1fr) auto
+    minmax(84px, 1fr) auto
+    minmax(84px, 1fr) auto
+    minmax(108px, 1.18fr);
+  width: min(100%, 760px);
+  column-gap: clamp(.3rem, 1.15vw, .85rem);
+  row-gap: 0;
+}
+.launch-time-unit {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.launch-time-unit-ms { min-width: 0; }
+.launch-colon {
+  align-self: center;
+  justify-self: center;
+  transform: translateY(-.2rem);
+}
+
+@media (max-width: 640px) {
+  .launch-clock {
+    grid-template-columns:
+      minmax(54px, 1fr) auto
+      minmax(54px, 1fr) auto
+      minmax(54px, 1fr) auto
+      minmax(72px, 1.15fr);
+    width: 100%;
+    gap: .16rem;
+  }
+  .launch-time-unit {
+    min-width: 0;
+    padding: .72rem .2rem;
+  }
+  .launch-time-unit strong {
+    font-size: clamp(1.55rem, 8.5vw, 2.45rem);
+  }
+  .launch-time-unit-ms strong {
+    font-size: clamp(1.35rem, 7.8vw, 2.15rem);
+  }
+  .launch-time-unit span {
+    margin-top: .42rem;
+    font-size: clamp(.42rem, 1.65vw, .56rem);
+    letter-spacing: .08em;
+  }
+  .launch-time-unit-ms span {
+    font-size: clamp(.38rem, 1.45vw, .5rem);
+  }
+  .launch-colon {
+    font-size: clamp(1.15rem, 4vw, 1.65rem);
+    transform: translateY(-.18rem);
+  }
+}
+
+@media (max-width: 380px) {
+  .launch-clock { gap: .08rem; }
+  .launch-time-unit { padding-inline: .08rem; }
+  .launch-time-unit span { letter-spacing: .04em; }
+}
