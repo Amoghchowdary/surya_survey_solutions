@@ -11,6 +11,7 @@ import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
+import { LaunchGate } from "../components/launch-gate";
 
 function NotFoundComponent() {
   return (
@@ -112,9 +113,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteHeader />
-      <main><Outlet /></main>
-      <SiteFooter />
+      <LaunchGate>
+        <SiteHeader />
+        <main><Outlet /></main>
+        <SiteFooter />
+      </LaunchGate>
     </QueryClientProvider>
   );
 }
