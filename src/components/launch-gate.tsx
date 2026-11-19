@@ -7,11 +7,7 @@ const FLOWERS = ["🌸", "🌼", "🌺", "🌷", "💮"] as const;
 
 type Phase = "countdown" | "blast" | "open";
 
-type Countdown = {
-  hours: string;
-  minutes: string;
-  seconds: string;
-};
+type Countdown = { hours: string; minutes: string; seconds: string };
 
 function remainingParts(now: number): Countdown {
   const remaining = Math.max(0, LAUNCH_AT - now);
@@ -57,15 +53,11 @@ export function LaunchGate({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (phase !== "countdown") return;
-
     const tick = () => {
       const current = Date.now();
       setNow(current);
-      if (current >= LAUNCH_AT) {
-        setPhase("blast");
-      }
+      if (current >= LAUNCH_AT) setPhase("blast");
     };
-
     tick();
     const timer = window.setInterval(tick, 250);
     return () => window.clearInterval(timer);
@@ -82,6 +74,7 @@ export function LaunchGate({ children }: { children: ReactNode }) {
   if (phase === "open") {
     return (
       <>
+        <FestiveTopDecor />
         {children}
         <FlowerRain />
       </>
@@ -90,11 +83,10 @@ export function LaunchGate({ children }: { children: ReactNode }) {
 
   return (
     <div className={`launch-gate ${phase === "blast" ? "launch-gate-blast" : ""}`}>
-      <FestiveTopDecor context="gate" />
+      <FestiveTopDecor />
       <div className="launch-grid" aria-hidden="true" />
       <div className="launch-glow launch-glow-one" aria-hidden="true" />
       <div className="launch-glow launch-glow-two" aria-hidden="true" />
-
       <div className="launch-content" aria-live="polite">
         <div className="launch-logo-wrap">
           <img src={`${base}images/surya-logo.png`} alt="Surya Survey Solutions" className="launch-logo" />
@@ -102,7 +94,6 @@ export function LaunchGate({ children }: { children: ReactNode }) {
         <p className="launch-eyebrow">SURYA SURVEY SOLUTIONS</p>
         <h1 className="launch-title">Precision is about to begin.</h1>
         <p className="launch-subtitle">Official website launch · 19 November 2026 · 11:30 AM IST</p>
-
         {phase === "countdown" ? (
           <div className="launch-clock" aria-label={`${countdown.hours} hours, ${countdown.minutes} minutes, ${countdown.seconds} seconds remaining`}>
             <div className="launch-time-unit"><strong>{countdown.hours}</strong><span>Hours</span></div>
@@ -111,13 +102,9 @@ export function LaunchGate({ children }: { children: ReactNode }) {
             <span className="launch-colon" aria-hidden="true">:</span>
             <div className="launch-time-unit"><strong>{countdown.seconds}</strong><span>Seconds</span></div>
           </div>
-        ) : (
-          <div className="launch-now">WE ARE LIVE</div>
-        )}
-
+        ) : <div className="launch-now">WE ARE LIVE</div>}
         <p className="launch-note">The website will open automatically when the countdown reaches zero.</p>
       </div>
-
       {phase === "blast" && (
         <div className="launch-flower-burst" aria-hidden="true">
           <div className="launch-flower-flash" />

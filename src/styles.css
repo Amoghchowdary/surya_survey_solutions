@@ -2001,6 +2001,8 @@
 /* V34 — three independent equipment image carousels for About + Services */
 .equipment-carousel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}.equipment-carousel-card{min-width:0;background:#fff;border:1px solid hsl(var(--border));overflow:hidden}.equipment-carousel-stage{position:relative;aspect-ratio:4/3;overflow:hidden;background:#071d2f}.equipment-carousel-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.015);transition:opacity .8s ease,transform 4.2s ease}.equipment-carousel-image.is-active{opacity:1;transform:scale(1)}.equipment-carousel-counter{position:absolute;right:.75rem;bottom:.75rem;z-index:4;background:rgba(4,17,29,.72);color:#fff;padding:.3rem .48rem;font-size:.68rem;font-weight:800;letter-spacing:.06em;backdrop-filter:blur(4px)}.equipment-carousel-copy{padding:1.15rem 1.2rem 1.25rem}.equipment-carousel-copy h3{font-size:1rem;font-weight:800;color:#071d2f}.equipment-carousel-copy p{margin-top:.35rem;font-size:.8rem;line-height:1.45;color:hsl(var(--muted-foreground))}@media(max-width:900px){.equipment-carousel-grid{grid-template-columns:1fr 1fr}.equipment-carousel-card:last-child{grid-column:1/-1}}@media(max-width:640px){.equipment-carousel-grid{grid-template-columns:1fr}.equipment-carousel-card:last-child{grid-column:auto}.equipment-carousel-stage{aspect-ratio:4/3}}@media(prefers-reduced-motion:reduce){.equipment-carousel-image{transition:none;transform:none}}
 
+
+/* V40 — launch gate and flower effects layered over untouched V34 */
 /* V35 — one-time website launch countdown gate */
 .launch-gate {
   position: relative;
@@ -2293,135 +2295,29 @@
   .site-flower-rain { display: none; }
 }
 
-/* V37 — festive thoranam decoration */
-.festive-top-decor {
-  pointer-events: none;
+
+
+/* V40 — realistic photographic thoranam; no emoji/CSS garland construction */
+.festive-real-thoranam {
   position: fixed;
   inset: 0 0 auto 0;
-  z-index: 60;
-  height: 112px;
+  z-index: 70;
+  width: 100%;
+  height: clamp(78px, 8.5vw, 132px);
   overflow: visible;
+  pointer-events: none;
 }
-.festive-top-decor-gate { z-index: 5; }
-.festive-top-decor-site { z-index: 60; }
-.festive-top-rope {
-  position: absolute;
-  top: 0;
-  left: 0;
+.festive-real-thoranam img {
+  display: block;
   width: 100%;
-  height: 6px;
-  background: linear-gradient(90deg, #8b5a2b 0%, #6a4120 50%, #8b5a2b 100%);
-  box-shadow: 0 1px 0 rgb(255 255 255 / .24) inset;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 5px 8px rgb(0 0 0 / .14));
 }
-.festive-mango-strip,
-.festive-marigold-row {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-}
-.festive-mango-strip {
-  top: 6px;
-  padding-inline: clamp(1rem, 4vw, 3rem);
-}
-.festive-mango-leaf {
-  width: 18px;
-  height: 34px;
-  background: linear-gradient(180deg, #5bc55c 0%, #2e8f42 55%, #1b5f2c 100%);
-  border-radius: 50% 50% 58% 58% / 24% 24% 76% 76%;
-  transform-origin: top center;
-  transform: rotate(var(--leaf-tilt));
-  box-shadow: 0 0 0 1px rgb(255 255 255 / .08) inset;
-  position: relative;
-}
-.festive-mango-leaf::after {
-  content: "";
-  position: absolute;
-  top: 4px;
-  bottom: 5px;
-  left: 50%;
-  width: 1.5px;
-  transform: translateX(-50%);
-  background: rgb(235 255 235 / .45);
-}
-.festive-marigold-row {
-  top: 14px;
-  gap: 1rem;
-  padding-inline: clamp(.6rem, 3vw, 2rem);
-}
-.festive-marigold-loop {
-  position: relative;
-  width: var(--loop-width);
-  height: var(--loop-drop);
-  border: 4px solid transparent;
-  border-bottom-color: rgb(228 148 36 / .95);
-  border-left-color: rgb(219 133 20 / .68);
-  border-right-color: rgb(241 185 67 / .72);
-  border-radius: 0 0 999px 999px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-.festive-loop-flowers {
-  position: absolute;
-  top: calc(100% - 4px);
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1rem;
-  line-height: 1;
-  letter-spacing: .06rem;
-  filter: drop-shadow(0 3px 5px rgb(0 0 0 / .18));
-}
-.festive-hanger {
-  position: absolute;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-.festive-hanger-string {
-  width: 2px;
-  height: 34px;
-  background: linear-gradient(180deg, #80592a 0%, #d8c4a4 100%);
-}
-.festive-hanger-bead {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 35% 35%, #ffd166 0%, #d18b00 72%, #8f5e00 100%);
-  box-shadow: 0 2px 5px rgb(0 0 0 / .18);
-}
-.festive-ganesh-medallion {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: radial-gradient(circle at 35% 35%, #fff6d1 0%, #f5d67d 42%, #d89612 100%);
-  color: #8c4107;
-  font-size: 1.15rem;
-  box-shadow: 0 8px 18px rgb(0 0 0 / .14);
-}
-.festive-bell {
-  font-size: .88rem;
-  filter: drop-shadow(0 2px 3px rgb(0 0 0 / .15));
-}
-
-@media (max-width: 767px) {
-  .festive-top-decor { height: 90px; }
-  .festive-mango-strip { padding-inline: .5rem; }
-  .festive-mango-leaf { width: 14px; height: 26px; }
-  .festive-marigold-row { top: 12px; gap: .35rem; padding-inline: .4rem; }
-  .festive-marigold-loop { width: 52px !important; height: 22px !important; border-width: 3px; }
-  .festive-loop-flowers { font-size: .7rem; letter-spacing: 0; }
-  .festive-hanger-string { height: 24px; }
-  .festive-ganesh-medallion { width: 30px; height: 30px; font-size: .9rem; }
-  .festive-bell { font-size: .72rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .festive-top-decor { filter: saturate(.9); }
+@media (max-width: 640px) {
+  .festive-real-thoranam { height: 74px; }
+  .festive-real-thoranam img { object-fit: cover; }
 }

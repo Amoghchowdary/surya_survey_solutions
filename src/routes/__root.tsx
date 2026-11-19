@@ -12,7 +12,6 @@ import { type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
 import { LaunchGate } from "../components/launch-gate";
-import { FestiveTopDecor } from "../components/festive-top-decor";
 
 function NotFoundComponent() {
   return (
@@ -77,10 +76,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "Surya Survey Solutions" },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.suryasurveysolutions.in/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: "https://www.suryasurveysolutions.in/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" },
@@ -115,7 +116,6 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LaunchGate>
-        <FestiveTopDecor context="site" />
         <SiteHeader />
         <main><Outlet /></main>
         <SiteFooter />
