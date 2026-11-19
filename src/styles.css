@@ -2297,27 +2297,36 @@
 
 
 
-/* V40 — realistic photographic thoranam; no emoji/CSS garland construction */
+/* V41 — full-depth realistic photographic thoranam, rendered without cropping */
 .festive-real-thoranam {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 70;
   width: 100%;
-  height: clamp(78px, 8.5vw, 132px);
+  height: auto;
   overflow: visible;
   pointer-events: none;
+  line-height: 0;
 }
 .festive-real-thoranam img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
   object-position: top center;
   pointer-events: none;
   user-select: none;
   filter: drop-shadow(0 5px 8px rgb(0 0 0 / .14));
 }
-@media (max-width: 640px) {
-  .festive-real-thoranam { height: 74px; }
-  .festive-real-thoranam img { object-fit: cover; }
+
+/* V42 — millisecond countdown refinement */
+.launch-time-unit-ms strong { min-width: 3ch; }
+.launch-time-unit-ms span { font-size: clamp(.52rem, .62vw, .68rem); }
+@media (max-width: 520px) {
+  .launch-clock { gap: .18rem; }
+  .launch-time-unit { min-width: 52px; }
+  .launch-time-unit-ms { min-width: 68px; }
+  .launch-time-unit strong { font-size: clamp(1.35rem, 8vw, 2rem); }
+  .launch-time-unit-ms strong { font-size: clamp(1.15rem, 7vw, 1.75rem); }
 }

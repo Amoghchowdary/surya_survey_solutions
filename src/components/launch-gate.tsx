@@ -7,7 +7,7 @@ const FLOWERS = ["🌸", "🌼", "🌺", "🌷", "💮"] as const;
 
 type Phase = "countdown" | "blast" | "open";
 
-type Countdown = { hours: string; minutes: string; seconds: string };
+type Countdown = { hours: string; minutes: string; seconds: string; milliseconds: string };
 
 function remainingParts(now: number): Countdown {
   const remaining = Math.max(0, LAUNCH_AT - now);
@@ -15,10 +15,12 @@ function remainingParts(now: number): Countdown {
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
+  const milliseconds = remaining % 1000;
   return {
     hours: String(hours).padStart(2, "0"),
     minutes: String(minutes).padStart(2, "0"),
     seconds: String(seconds).padStart(2, "0"),
+    milliseconds: String(milliseconds).padStart(3, "0"),
   };
 }
 
@@ -59,7 +61,7 @@ export function LaunchGate({ children }: { children: ReactNode }) {
       if (current >= LAUNCH_AT) setPhase("blast");
     };
     tick();
-    const timer = window.setInterval(tick, 250);
+    const timer = window.setInterval(tick, 20);
     return () => window.clearInterval(timer);
   }, [phase]);
 
@@ -95,12 +97,14 @@ export function LaunchGate({ children }: { children: ReactNode }) {
         <h1 className="launch-title">Precision is about to begin.</h1>
         <p className="launch-subtitle">Official website launch · 19 November 2026 · 11:30 AM IST</p>
         {phase === "countdown" ? (
-          <div className="launch-clock" aria-label={`${countdown.hours} hours, ${countdown.minutes} minutes, ${countdown.seconds} seconds remaining`}>
+          <div className="launch-clock" aria-label={`${countdown.hours} hours, ${countdown.minutes} minutes, ${countdown.seconds} seconds, ${countdown.milliseconds} milliseconds remaining`}>
             <div className="launch-time-unit"><strong>{countdown.hours}</strong><span>Hours</span></div>
             <span className="launch-colon" aria-hidden="true">:</span>
             <div className="launch-time-unit"><strong>{countdown.minutes}</strong><span>Minutes</span></div>
             <span className="launch-colon" aria-hidden="true">:</span>
             <div className="launch-time-unit"><strong>{countdown.seconds}</strong><span>Seconds</span></div>
+            <span className="launch-colon" aria-hidden="true">:</span>
+            <div className="launch-time-unit launch-time-unit-ms"><strong>{countdown.milliseconds}</strong><span>Milliseconds</span></div>
           </div>
         ) : <div className="launch-now">WE ARE LIVE</div>}
         <p className="launch-note">The website will open automatically when the countdown reaches zero.</p>
