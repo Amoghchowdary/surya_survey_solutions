@@ -32,35 +32,46 @@ jobs:
       - name: Block critical dependency vulnerabilities
         run: npm audit --audit-level=critical
 
-      - name: Build V37 for GitHub Pages
+      - name: Build V38 for GitHub Pages
         run: npm run build
         env:
           SITE_BASE_PATH: /surya_survey_solutions/
 
-      - name: Verify static build and prepare fallback
+      - name: Prepare TanStack SPA artifact for GitHub Pages
         shell: bash
         run: |
           set -euo pipefail
           rm -rf pages-artifact
           mkdir -p pages-artifact
 
-          BUILD_DIR=""
-          if [ -f dist/client/index.html ]; then
-            BUILD_DIR="dist/client"
-          elif [ -f dist/index.html ]; then
-            BUILD_DIR="dist"
-          elif [ -f .output/public/index.html ]; then
-            BUILD_DIR=".output/public"
-          else
-            echo "Unable to locate built index.html"
-            find . -maxdepth 3 -type f -name 'index.html' | sort
+          SHELL_FILE="$(find dist .output -type f \( -name '_shell.html' -o -name 'index.html' \) 2>/dev/null | head -n 1 || true)"
+
+          if [ -z "${SHELL_FILE}" ]; then
+            echo "ERROR: TanStack SPA shell was not found. Build output follows:"
+            find dist .output -maxdepth 5 -type f 2>/dev/null | sort | head -n 300 || true
             exit 1
           fi
 
-          echo "Using build directory: ${BUILD_DIR}"
+          BUILD_DIR="$(dirname "${SHELL_FILE}")"
+          SHELL_NAME="$(basename "${SHELL_FILE}")"
+
+          echo "Detected TanStack Pages build directory: ${BUILD_DIR}"
+          echo "Detected shell: ${SHELL_NAME}"
+
           cp -R "${BUILD_DIR}/." pages-artifact/
+
+          if [ "${SHELL_NAME}" = "_shell.html" ]; then
+            cp "${SHELL_FILE}" pages-artifact/index.html
+          elif [ ! -f pages-artifact/index.html ]; then
+            cp "${SHELL_FILE}" pages-artifact/index.html
+          fi
+
+          test -f pages-artifact/index.html
           cp pages-artifact/index.html pages-artifact/404.html
           touch pages-artifact/.nojekyll
+
+          echo "GitHub Pages artifact prepared successfully:"
+          find pages-artifact -maxdepth 2 -type f | sort | head -n 100
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
