@@ -32,7 +32,7 @@ jobs:
       - name: Block critical dependency vulnerabilities
         run: npm audit --audit-level=critical
 
-      - name: Build V36 for GitHub Pages
+      - name: Build V37 for GitHub Pages
         run: npm run build
         env:
           SITE_BASE_PATH: /surya_survey_solutions/
@@ -40,9 +40,27 @@ jobs:
       - name: Verify static build and prepare fallback
         shell: bash
         run: |
-          test -f dist/client/index.html
-          cp dist/client/index.html dist/client/404.html
-          touch dist/client/.nojekyll
+          set -euo pipefail
+          rm -rf pages-artifact
+          mkdir -p pages-artifact
+
+          BUILD_DIR=""
+          if [ -f dist/client/index.html ]; then
+            BUILD_DIR="dist/client"
+          elif [ -f dist/index.html ]; then
+            BUILD_DIR="dist"
+          elif [ -f .output/public/index.html ]; then
+            BUILD_DIR=".output/public"
+          else
+            echo "Unable to locate built index.html"
+            find . -maxdepth 3 -type f -name 'index.html' | sort
+            exit 1
+          fi
+
+          echo "Using build directory: ${BUILD_DIR}"
+          cp -R "${BUILD_DIR}/." pages-artifact/
+          cp pages-artifact/index.html pages-artifact/404.html
+          touch pages-artifact/.nojekyll
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -50,7 +68,7 @@ jobs:
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/client
+          path: ./pages-artifact
 
   deploy:
     environment:

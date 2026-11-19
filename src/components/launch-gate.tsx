@@ -1,6 +1,7 @@
 import { type CSSProperties, type ReactNode, useEffect, useMemo, useState } from "react";
+import { FestiveTopDecor } from "./festive-top-decor";
 
-const LAUNCH_AT = new Date("2026-11-19T11:00:00+05:30").getTime();
+const LAUNCH_AT = new Date("2026-11-19T11:30:00+05:30").getTime();
 const BLAST_DURATION_MS = 2200;
 const FLOWERS = ["🌸", "🌼", "🌺", "🌷", "💮"] as const;
 
@@ -89,6 +90,7 @@ export function LaunchGate({ children }: { children: ReactNode }) {
 
   return (
     <div className={`launch-gate ${phase === "blast" ? "launch-gate-blast" : ""}`}>
+      <FestiveTopDecor context="gate" />
       <div className="launch-grid" aria-hidden="true" />
       <div className="launch-glow launch-glow-one" aria-hidden="true" />
       <div className="launch-glow launch-glow-two" aria-hidden="true" />
@@ -99,7 +101,7 @@ export function LaunchGate({ children }: { children: ReactNode }) {
         </div>
         <p className="launch-eyebrow">SURYA SURVEY SOLUTIONS</p>
         <h1 className="launch-title">Precision is about to begin.</h1>
-        <p className="launch-subtitle">Official website launch · 19 November 2026 · 11:00 AM IST</p>
+        <p className="launch-subtitle">Official website launch · 19 November 2026 · 11:30 AM IST</p>
 
         {phase === "countdown" ? (
           <div className="launch-clock" aria-label={`${countdown.hours} hours, ${countdown.minutes} minutes, ${countdown.seconds} seconds remaining`}>

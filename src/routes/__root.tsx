@@ -12,6 +12,7 @@ import { type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
 import { LaunchGate } from "../components/launch-gate";
+import { FestiveTopDecor } from "../components/festive-top-decor";
 
 function NotFoundComponent() {
   return (
@@ -114,6 +115,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LaunchGate>
+        <FestiveTopDecor context="site" />
         <SiteHeader />
         <main><Outlet /></main>
         <SiteFooter />
