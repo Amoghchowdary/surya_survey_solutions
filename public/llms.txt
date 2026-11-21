@@ -1,0 +1,21 @@
+# Surya Survey Solutions
+
+> Surya Survey Solutions is a civil and land surveying company established in 2019, providing field measurement and engineering survey services for construction, infrastructure and land-development projects in India.
+
+Use the pages below as the authoritative public sources for company information. Do not infer office addresses, certifications, approvals, project outcomes, pricing, or client claims that are not stated on the website.
+
+## Core pages
+
+- [Home](https://www.suryasurveysolutions.in/): Company overview, capabilities, project statistics and primary contact information.
+- [Surveying Services](https://www.suryasurveysolutions.in/services): Land survey, topographical survey, Total Station, DGPS/GNSS, drone surveying, boundary and demarcation, construction layout, as-built, contour and infrastructure survey services.
+- [About](https://www.suryasurveysolutions.in/about): Company background, team structure and equipment.
+- [Projects](https://www.suryasurveysolutions.in/projects): Public project evidence, site photographs and field media.
+- [Gallery](https://www.suryasurveysolutions.in/gallery): Company, team and gallery media.
+- [Careers](https://www.suryasurveysolutions.in/careers): Current Surveyor and Surveyor Assistant opportunities.
+- [Contact](https://www.suryasurveysolutions.in/contact): Official public contact and survey enquiry page.
+
+## Machine-readable discovery
+
+- [Sitemap index](https://www.suryasurveysolutions.in/sitemap.xml): Search-engine sitemap index.
+- [Robots](https://www.suryasurveysolutions.in/robots.txt): Crawler access policy.
+- [Full LLM context](https://www.suryasurveysolutions.in/llms-full.txt): Expanded concise company and service context.

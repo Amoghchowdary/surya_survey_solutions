@@ -32,7 +32,7 @@ jobs:
       - name: Block critical dependency vulnerabilities
         run: npm audit --audit-level=critical
 
-      - name: Build V46 production for custom-domain GitHub Pages
+      - name: Build V48 production for custom-domain GitHub Pages
         run: npm run build
         env:
           SITE_BASE_PATH: /
@@ -69,6 +69,28 @@ jobs:
           cp pages-artifact/index.html pages-artifact/404.html
           printf 'www.suryasurveysolutions.in\n' > pages-artifact/CNAME
           touch pages-artifact/.nojekyll
+
+          # Re-copy critical public discovery files explicitly so dot-directories and
+          # crawler resources are never lost by a framework/public-dir change.
+          mkdir -p pages-artifact/.well-known
+          cp public/.well-known/security.txt pages-artifact/.well-known/security.txt
+          for file in robots.txt sitemap.xml sitemap-index.xml sitemap-pages.xml sitemap-images.xml sitemap-videos.xml llms.txt llms-full.txt humans.txt security.txt site.webmanifest browserconfig.xml favicon.ico apple-touch-icon.png surya-favicon-48.png surya-favicon-96.png surya-favicon-192.png surya-favicon-512.png surya-maskable-512.png; do
+            cp "public/$file" "pages-artifact/$file"
+          done
+
+          # Production-critical discovery and brand assets must ship with every deployment.
+          test -f pages-artifact/favicon.ico
+          test -f pages-artifact/surya-favicon-48.png
+          test -f pages-artifact/robots.txt
+          test -f pages-artifact/sitemap.xml
+          test -f pages-artifact/sitemap-pages.xml
+          test -f pages-artifact/sitemap-images.xml
+          test -f pages-artifact/sitemap-videos.xml
+          test -f pages-artifact/llms.txt
+          test -f pages-artifact/llms-full.txt
+          test -f pages-artifact/.well-known/security.txt
+          test "$(tr -d '\r\n' < pages-artifact/CNAME)" = "www.suryasurveysolutions.in"
+
           echo "Prepared artifact:"
           find pages-artifact -maxdepth 2 -type f | sort | head -80
 

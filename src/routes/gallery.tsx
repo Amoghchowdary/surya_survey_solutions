@@ -11,8 +11,8 @@ export const Route = createFileRoute("/gallery")({
     meta: [
       { title: "Surveying Gallery | Surya Survey Solutions" },
       { name: "description", content: "View Surya Survey Solutions field, equipment, team and company gallery content supporting its civil engineering and land surveying work." },
-      { property: "og:title", content: "Celebrations Surveying Gallery | Surya Survey Solutions" },
-      { property: "og:description", content: "All supplied celebration photographs and videos from Surya Survey Solutions." },
+      { property: "og:title", content: "Surveying & Team Gallery | Surya Survey Solutions" },
+      { property: "og:description", content: "Field, equipment, team and company photographs and videos from Surya Survey Solutions." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.suryasurveysolutions.in/gallery" },
     ],

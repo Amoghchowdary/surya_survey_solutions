@@ -1,0 +1,9 @@
+/* TEAM */
+Organization: Surya Survey Solutions
+Website: https://www.suryasurveysolutions.in/
+Established: 2019
+Contact: suryamovva@gmail.com
+
+/* SITE */
+Language: English (India)
+Standards: HTML, CSS, JavaScript, structured data, XML sitemaps

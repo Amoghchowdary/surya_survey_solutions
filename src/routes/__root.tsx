@@ -7,30 +7,49 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { type ReactNode } from "react";
+import { type ReactNode, useEffect } from "react";
 
 import appCss from "../styles.css?url";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
 
 function NotFoundComponent() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = "Page Not Found | Surya Survey Solutions";
+    let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    const created = !robots;
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.name = "robots";
+      document.head.appendChild(robots);
+    }
+    const previousContent = robots.content;
+    robots.content = "noindex,follow";
+    return () => {
+      document.title = previousTitle;
+      if (created) robots?.remove();
+      else if (robots) robots.content = previousContent;
+    };
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
+    <>
+      <SiteHeader />
+      <main className="production-status-page">
+        <div className="production-status-card">
+          <span className="production-status-code">404</span>
+          <p className="production-status-eyebrow">SURYA SURVEY SOLUTIONS</p>
+          <h1>That survey point could not be found.</h1>
+          <p>The page may have moved or the address may be incorrect. Continue with one of the main website sections below.</p>
+          <div className="production-status-actions">
+            <Link to="/" className="production-status-primary">Return Home</Link>
+            <Link to="/services" className="production-status-secondary">Surveying Services</Link>
+            <Link to="/projects" className="production-status-secondary">View Projects</Link>
+          </div>
         </div>
-      </div>
-    </div>
+      </main>
+      <SiteFooter />
+    </>
   );
 }
 
@@ -38,33 +57,28 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href={import.meta.env.BASE_URL}
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
+    <>
+      <SiteHeader />
+      <main className="production-status-page">
+        <div className="production-status-card">
+          <span className="production-status-code">500</span>
+          <p className="production-status-eyebrow">SURYA SURVEY SOLUTIONS</p>
+          <h1>This page could not be loaded.</h1>
+          <p>The website encountered a temporary problem. Retry the page or return to the main website.</p>
+          <div className="production-status-actions">
+            <button
+              type="button"
+              onClick={() => { router.invalidate(); reset(); }}
+              className="production-status-primary"
+            >
+              Try Again
+            </button>
+            <a href={import.meta.env.BASE_URL} className="production-status-secondary">Return Home</a>
+          </div>
         </div>
-      </div>
-    </div>
+      </main>
+      <SiteFooter />
+    </>
   );
 }
 
@@ -74,11 +88,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "Surya Survey Solutions" },
+      { name: "application-name", content: "Surya Survey Solutions" },
+      { name: "theme-color", content: "#020a12" },
+      { name: "msapplication-TileColor", content: "#020a12" },
+      { name: "msapplication-config", content: "/browserconfig.xml" },
+      { name: "referrer", content: "strict-origin-when-cross-origin" },
+      { name: "format-detection", content: "telephone=no" },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_IN" },
       { property: "og:site_name", content: "Surya Survey Solutions" },
+      { property: "og:image", content: "https://www.suryasurveysolutions.in/images/survey-hero-1920.webp" },
+      { property: "og:image:alt", content: "Surya Survey Solutions civil engineering surveying fieldwork" },
       { name: "robots", content: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" },
       { name: "googlebot", content: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://www.suryasurveysolutions.in/images/survey-hero-1920.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -88,8 +112,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon", sizes: "any" },
       { rel: "icon", href: "/surya-favicon-48.png", type: "image/png", sizes: "48x48" },
       { rel: "icon", href: "/surya-favicon-96.png", type: "image/png", sizes: "96x96" },
-      { rel: "apple-touch-icon", href: "/surya-favicon-192.png", sizes: "192x192" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
       { rel: "manifest", href: "/site.webmanifest" },
+      { rel: "describedby", href: "/llms.txt", type: "text/markdown" },
     ],
   }),
   shellComponent: RootShell,
@@ -100,12 +125,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
         <HeadContent />
       </head>
       <body>
         {children}
+        <noscript><div className="noscript-notice">JavaScript is required to use the interactive Surya Survey Solutions website. You can still contact us at 7036892959 or suryamovva@gmail.com.</div></noscript>
         <Scripts />
       </body>
     </html>
@@ -117,8 +143,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <a href="#main-content" className="skip-to-content">Skip to main content</a>
       <SiteHeader />
-      <main><Outlet /></main>
+      <main id="main-content"><Outlet /></main>
       <SiteFooter />
     </QueryClientProvider>
   );

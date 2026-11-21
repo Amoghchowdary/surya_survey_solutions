@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 const primaryNav = [
   ["Home", "/"],
   ["About", "/about"],
+  ["Services", "/services"],
   ["Projects", "/projects"],
   ["Gallery", "/gallery"],
   ["Careers", "/careers"],
@@ -22,7 +23,7 @@ export function SiteHeader() {
         <Link to="/" className="site-brand" aria-label="Surya Survey Solutions home">
           <span className="site-brand-logo">
             <img
-              src={`${base}images/surya-logo.png`}
+              src={`${base}images/surya-logo-mark.png`}
               alt="Surya Survey Solutions official logo"
             />
           </span>
@@ -33,14 +34,18 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Primary navigation" className="site-desktop-nav">
-          <Link to="/" activeOptions={{ exact: true }} className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Home</Link>
-          <Link to="/about" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>About</Link>
-          <Link to="/careers" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Careers</Link>
-          <Link to="/services" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Services</Link>
-          <Link to="/projects" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Projects</Link>
-          <Link to="/gallery" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Gallery</Link>
+          {primaryNav.map(([label, to]) => (
+            <Link
+              key={to}
+              to={to}
+              activeOptions={to === "/" ? { exact: true } : undefined}
+              className="nav-link"
+              activeProps={{ className: "nav-link nav-link-active" }}
+            >
+              {label}
+            </Link>
+          ))}
           <a href={`${base}#why-us`} className="nav-link">Why Us</a>
-          <Link to="/contact" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Contact</Link>
         </nav>
 
         <Button asChild size="lg" className="site-quote-button">
@@ -62,15 +67,10 @@ export function SiteHeader() {
       {open && (
         <nav aria-label="Mobile navigation" className="site-mobile-nav">
           <div className="site-mobile-nav-inner">
-            {primaryNav.slice(0, 2).map(([label, to]) => (
+            {primaryNav.map(([label, to]) => (
               <Link key={to} to={to} onClick={() => setOpen(false)} className="site-mobile-link">{label}</Link>
             ))}
-            <Link to="/careers" onClick={() => setOpen(false)} className="site-mobile-link">Careers</Link>
-            <Link to="/services" onClick={() => setOpen(false)} className="site-mobile-link">Services</Link>
-            <Link to="/projects" onClick={() => setOpen(false)} className="site-mobile-link">Projects</Link>
-            <Link to="/gallery" onClick={() => setOpen(false)} className="site-mobile-link">Gallery</Link>
             <a href={`${base}#why-us`} onClick={() => setOpen(false)} className="site-mobile-link">Why Us</a>
-            <Link to="/contact" onClick={() => setOpen(false)} className="site-mobile-link">Contact</Link>
             <Button asChild size="lg" className="site-mobile-quote">
               <Link to="/contact" onClick={() => setOpen(false)}><Send /> Get a Quote</Link>
             </Button>
@@ -88,7 +88,7 @@ export function SiteFooter() {
       <div className="page-wrap site-footer-grid grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="mb-5 flex items-center gap-4">
-            <img src={`${base}images/surya-logo.png`} alt="Surya Survey Solutions logo" className="site-footer-logo h-24 w-24 rounded-full object-cover object-top" />
+            <img src={`${base}images/surya-logo-mark.png`} alt="Surya Survey Solutions logo" className="site-footer-logo h-24 w-24 rounded-full object-cover object-top" />
             <div>
               <strong className="text-sm leading-5">SURYA SURVEY<br />SOLUTIONS</strong>
               <span className="mt-2 block text-[10px] uppercase tracking-[0.12em] text-white/50">Since 2019</span>
