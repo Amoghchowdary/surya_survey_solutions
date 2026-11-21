@@ -47,6 +47,7 @@ export const Route = createFileRoute("/")({
         telephone: "7036892959",
         email: "suryamovva@gmail.com",
         foundingDate: "2019",
+        numberOfEmployees: { "@type": "QuantitativeValue", minValue: 25 },
         areaServed: { "@type": "Country", name: "India" },
         knowsAbout: ["Land Surveying", "Topographical Survey", "Total Station Survey", "DGPS Survey", "GNSS Survey", "Drone Surveying", "Construction Layout", "Boundary Survey", "As-Built Survey", "Road and Infrastructure Survey"],
       }),
@@ -175,7 +176,7 @@ function HomePage() {
         <div className="page-wrap">
           <SectionHeading eyebrow="Technical services" title="Our Surveying Capabilities" text="Land and civil engineering survey services for planning, construction and verification, including topographical, Total Station, DGPS/GNSS, drone, boundary, layout, as-built and infrastructure surveying." />
           <div className="services-grid mt-12 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
-            {services.map(([name, desc], i) => { const Icon: LucideIcon = icons[i] ?? Map; return <article key={name} className="group bg-background p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"><Icon className="size-7 text-emerald-600" strokeWidth={1.6} /><div className="mt-8 text-xs font-bold text-emerald-600">0{i + 1}</div><h3 className="mt-2 text-lg font-bold">{name}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{desc}</p></article>; })}
+            {services.map(([name, desc], i) => { const Icon: LucideIcon = icons[i] ?? Map; return <article key={name} className="group bg-background p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"><Icon className="size-7 text-emerald-600" strokeWidth={1.6} /><h3 className="mt-2 text-lg font-bold">{name}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{desc}</p></article>; })}
           </div>
           <div className="mt-16 border-t border-border pt-12">
             <SectionHeading eyebrow="Equipment gallery" title="Equipment Behind the Survey" text="Three continuously rotating equipment galleries from real field operations." />
@@ -208,7 +209,7 @@ function HomePage() {
       <section className="section-pad bg-surface">
         <div className="page-wrap">
           <SectionHeading eyebrow="Project sectors" title="Surveying Across Civil Engineering Projects" />
-          <div className="industries-grid mt-10 grid grid-cols-2 gap-px bg-border md:grid-cols-4">{industries.map((x, i) => <div key={x} className="bg-background p-6 transition-colors hover:bg-emerald-50"><span className="text-xs font-bold text-emerald-600">{String(i + 1).padStart(2, "0")}</span><h3 className="mt-7 font-bold">{x}</h3></div>)}</div>
+          <div className="industries-grid mt-10 grid grid-cols-2 gap-px bg-border md:grid-cols-4">{industries.map((x, i) => <div key={x} className="bg-background p-6 transition-colors hover:bg-emerald-50"><h3 className="mt-7 font-bold">{x}</h3></div>)}</div>
         </div>
       </section>
 
@@ -222,7 +223,7 @@ function HomePage() {
       <section id="why-us" className="section-pad scroll-mt-28 bg-[#061622] text-white">
         <div className="page-wrap">
           <SectionHeading eyebrow="Why Surya Survey Solutions" title="Accuracy You Can Build On." light />
-          <div className="why-grid mt-10 grid gap-px bg-white/10 md:grid-cols-5">{["Precision-Focused Surveying", "Experienced Field Execution", "Modern Survey Methods", "Reliable Engineering Data", "On-Time Project Support"].map((x, i) => <div key={x} className="bg-[#071b29] p-6 transition-colors hover:bg-[#0b2638]"><span className="font-mono text-xs text-emerald-400">+0{i + 1}</span><h3 className="mt-10 font-bold leading-6">{x}</h3></div>)}</div>
+          <div className="why-grid mt-10 grid gap-px bg-white/10 md:grid-cols-5">{["Precision-Focused Surveying", "Experienced Field Execution", "Modern Survey Methods", "Reliable Engineering Data", "On-Time Project Support"].map((x, i) => <div key={x} className="bg-[#071b29] p-6 transition-colors hover:bg-[#0b2638]"><h3 className="mt-10 font-bold leading-6">{x}</h3></div>)}</div>
         </div>
       </section>
 

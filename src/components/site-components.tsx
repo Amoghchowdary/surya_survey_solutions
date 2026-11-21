@@ -10,7 +10,7 @@ export function SectionHeading({ eyebrow, title, text, light = false }: { eyebro
 
 export function Stats({ compact = false }: { compact?: boolean }) {
   return (
-    <div className={`stats-grid grid grid-cols-2 border-y border-border ${compact ? "lg:grid-cols-5" : "md:grid-cols-5"}`}>
+    <div className={`stats-grid grid grid-cols-2 border-y border-border ${compact ? "lg:grid-cols-6" : "md:grid-cols-6"}`}>
       {stats.map((s) => (
         <div key={s.label} className="stats-cell border-r border-border px-5 py-8 md:px-7 lg:px-8">
           <div className="text-3xl font-extrabold text-primary md:text-4xl lg:text-5xl">{s.value}</div>

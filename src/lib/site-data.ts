@@ -11,6 +11,7 @@ export const stats = [
   { value: "12", label: "Ongoing Projects", dominant: true },
   { value: "13", label: "Upcoming Projects", dominant: true },
   { value: "40+", label: "Clients Served" },
+  { value: "25+", label: "Employees" },
 ];
 export type ClientLogo = { name: string; src: string; alt: string; projectSlug?: string; };
 export const clientLogos: ClientLogo[] = [

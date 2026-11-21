@@ -32,7 +32,7 @@ jobs:
       - name: Block critical dependency vulnerabilities
         run: npm audit --audit-level=critical
 
-      - name: Build V45 SEO for custom-domain GitHub Pages
+      - name: Build V46 production for custom-domain GitHub Pages
         run: npm run build
         env:
           SITE_BASE_PATH: /

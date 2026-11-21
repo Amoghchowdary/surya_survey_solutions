@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Phone, Mail, MapPin, Send } from "lucide-react";
+import { Menu, X, Phone, Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -8,6 +8,7 @@ const primaryNav = [
   ["About", "/about"],
   ["Projects", "/projects"],
   ["Gallery", "/gallery"],
+  ["Careers", "/careers"],
   ["Contact", "/contact"],
 ] as const;
 
@@ -34,7 +35,7 @@ export function SiteHeader() {
         <nav aria-label="Primary navigation" className="site-desktop-nav">
           <Link to="/" activeOptions={{ exact: true }} className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Home</Link>
           <Link to="/about" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>About</Link>
-          <a href={`${base}contact#careers`} className="nav-link">Careers</a>
+          <Link to="/careers" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Careers</Link>
           <Link to="/services" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Services</Link>
           <Link to="/projects" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Projects</Link>
           <Link to="/gallery" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Gallery</Link>
@@ -64,7 +65,7 @@ export function SiteHeader() {
             {primaryNav.slice(0, 2).map(([label, to]) => (
               <Link key={to} to={to} onClick={() => setOpen(false)} className="site-mobile-link">{label}</Link>
             ))}
-            <a href={`${base}contact#careers`} onClick={() => setOpen(false)} className="site-mobile-link">Careers</a>
+            <Link to="/careers" onClick={() => setOpen(false)} className="site-mobile-link">Careers</Link>
             <Link to="/services" onClick={() => setOpen(false)} className="site-mobile-link">Services</Link>
             <Link to="/projects" onClick={() => setOpen(false)} className="site-mobile-link">Projects</Link>
             <Link to="/gallery" onClick={() => setOpen(false)} className="site-mobile-link">Gallery</Link>
@@ -98,9 +99,7 @@ export function SiteFooter() {
         <div>
           <h2 className="mb-5 text-sm font-bold uppercase text-emerald-400">Quick Links</h2>
           <ul className="space-y-3 text-sm text-white/65">
-            {primaryNav.slice(0,2).map(([label, to]) => <li key={to}><Link to={to} className="hover:text-white">{label}</Link></li>)}
-            <li><a href={`${base}contact#careers`} className="hover:text-white">Careers</a></li>
-            {primaryNav.slice(2).map(([label, to]) => <li key={to}><Link to={to} className="hover:text-white">{label}</Link></li>)}
+            {primaryNav.map(([label, to]) => <li key={to}><Link to={to} className="hover:text-white">{label}</Link></li>)}
           </ul>
         </div>
         <div>
@@ -112,7 +111,6 @@ export function SiteFooter() {
           <ul className="space-y-4 text-sm text-white/65">
             <li className="flex gap-3"><Phone className="mt-0.5 size-4 shrink-0 text-emerald-400" /><a href="tel:7036892959" className="break-all hover:text-white">7036892959</a></li>
             <li className="flex gap-3"><Mail className="mt-0.5 size-4 shrink-0 text-emerald-400" /><a href="mailto:suryamovva@gmail.com" className="break-all hover:text-white">suryamovva@gmail.com</a></li>
-            <li className="flex gap-3"><MapPin className="mt-0.5 size-4 shrink-0 text-emerald-400" />Office address to be added</li>
           </ul>
         </div>
       </div>
