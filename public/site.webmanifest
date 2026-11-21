@@ -1,8 +1,8 @@
 {
   "name": "Surya Survey Solutions",
   "short_name": "Surya Survey",
-  "description": "Professional civil engineering surveying and field measurement solutions.",
-  "start_url": "./",
+  "description": "Land and civil engineering surveying services including topographical, Total Station, DGPS/GNSS, drone, construction layout and infrastructure surveys.",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#020a12",
   "theme_color": "#020a12",

@@ -24,24 +24,53 @@ import { images, projects, services } from "@/lib/site-data";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Surya Survey Solutions | Civil Engineering Surveying Services" },
-      { name: "description", content: "Professional civil engineering surveying services including topographical, Total Station, DGPS/GNSS, construction layout and infrastructure surveying." },
-      { property: "og:title", content: "Surya Survey Solutions | Precision in Every Measurement" },
-      { property: "og:description", content: "Accurate surveys, reliable field data and engineering support for construction and infrastructure projects." },
+      { title: "Surya Survey Solutions | Land & Civil Surveying Services India" },
+      { name: "description", content: "Surya Survey Solutions provides land and civil engineering surveying services across India, including topographical, Total Station, DGPS/GNSS, drone, boundary, construction layout, as-built and infrastructure surveys." },
+      { property: "og:title", content: "Surya Survey Solutions | Land & Civil Surveying Services" },
+      { property: "og:description", content: "Professional land, topographical, Total Station, DGPS/GNSS, drone and construction surveying for civil engineering and infrastructure projects." },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `${import.meta.env.BASE_URL}images/survey-hero-1920.webp` },
+      { property: "og:url", content: "https://www.suryasurveysolutions.in/" },
+      { property: "og:image", content: "https://www.suryasurveysolutions.in/images/survey-hero-1920.webp" },
+      { property: "og:image:alt", content: "Surya Survey Solutions civil engineering surveying fieldwork" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://www.suryasurveysolutions.in/" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify({
         "@context": "https://schema.org",
-        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@type": ["Organization", "ProfessionalService"],
         name: "Surya Survey Solutions",
-        description: "Professional civil engineering surveying and field measurement solutions.",
+        url: "https://www.suryasurveysolutions.in/",
+        logo: "https://www.suryasurveysolutions.in/images/surya-logo.png",
+        description: "Land and civil engineering surveying services including topographical, Total Station, DGPS/GNSS, drone, boundary, construction layout, as-built and infrastructure surveys.",
         telephone: "7036892959",
         email: "suryamovva@gmail.com",
+        foundingDate: "2019",
+        areaServed: { "@type": "Country", name: "India" },
+        knowsAbout: ["Land Surveying", "Topographical Survey", "Total Station Survey", "DGPS Survey", "GNSS Survey", "Drone Surveying", "Construction Layout", "Boundary Survey", "As-Built Survey", "Road and Infrastructure Survey"],
+      }),
+    }, {
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.suryasurveysolutions.in/#website",
+            url: "https://www.suryasurveysolutions.in/",
+            name: "Surya Survey Solutions",
+            publisher: { "@id": "https://www.suryasurveysolutions.in/#organization" }
+          },
+          {
+            "@type": "ItemList",
+            name: "Surveying Services",
+            itemListElement: [
+              "Topographical Survey", "Total Station Survey", "DGPS / GNSS Survey", "Boundary & Demarcation",
+              "Construction Layout", "Road & Infrastructure Survey", "As-Built Survey", "Contour & Level Survey", "Drone Surveying"
+            ].map((name, index) => ({ "@type": "ListItem", position: index + 1, name }))
+          }
+        ]
       }),
     }],
   }),
@@ -91,7 +120,7 @@ function HomePage() {
               <span className="home-hero-title-light">For a stronger</span><br />
               <span className="home-hero-title-accent">Tomorrow</span>
             </h1>
-            <p className="home-hero-description">Accurate surveys. Reliable data. Trusted support for infrastructure, industrial and construction projects across India.</p>
+            <p className="home-hero-description">Land and civil engineering surveying with accurate field data for construction, infrastructure and development projects across India.</p>
             <div className="home-hero-actions">
               <Button asChild size="lg" className="home-hero-primary"><a href={`${base}#services`}>Our Services <ArrowRight /></a></Button>
               <Button asChild variant="inverse" size="lg" className="home-hero-secondary"><Link to="/projects">View Projects</Link></Button>
@@ -144,7 +173,7 @@ function HomePage() {
 
       <section id="services" className="section-pad scroll-mt-28 bg-surface">
         <div className="page-wrap">
-          <SectionHeading eyebrow="Technical services" title="Our Surveying Capabilities" text="Professional field measurement and engineering survey support for planning, construction and verification." />
+          <SectionHeading eyebrow="Technical services" title="Our Surveying Capabilities" text="Land and civil engineering survey services for planning, construction and verification, including topographical, Total Station, DGPS/GNSS, drone, boundary, layout, as-built and infrastructure surveying." />
           <div className="services-grid mt-12 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
             {services.map(([name, desc], i) => { const Icon: LucideIcon = icons[i] ?? Map; return <article key={name} className="group bg-background p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"><Icon className="size-7 text-emerald-600" strokeWidth={1.6} /><div className="mt-8 text-xs font-bold text-emerald-600">0{i + 1}</div><h3 className="mt-2 text-lg font-bold">{name}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{desc}</p></article>; })}
           </div>

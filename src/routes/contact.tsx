@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Clock, Mail, MapPin, MessageCircle, Phone, type LucideIcon } from "lucide-react";
+import { BriefcaseBusiness, Clock, Mail, MapPin, MessageCircle, Phone, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,15 +10,15 @@ import { PageHero } from "@/components/site-components";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Surya Survey Solutions | Survey Enquiry" },
-      { name: "description", content: "Contact Surya Survey Solutions at 7036892959 or suryamovva@gmail.com for civil engineering survey requirements." },
+      { title: "Contact Surya Survey Solutions | Land Survey Enquiry" },
+      { name: "description", content: "Contact Surya Survey Solutions for land, topographical, Total Station, DGPS/GNSS, drone, construction layout, boundary and infrastructure survey enquiries." },
       { property: "og:title", content: "Request a Survey | Surya Survey Solutions" },
       { property: "og:description", content: "Share your site location and civil engineering survey requirement." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: "https://www.suryasurveysolutions.in/contact" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://www.suryasurveysolutions.in/contact" }],
   }),
   component: ContactPage,
 });
@@ -48,6 +48,7 @@ const contactItems: Array<{
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [careerSent, setCareerSent] = useState(false);
 
   return (
     <>
@@ -128,6 +129,68 @@ function ContactPage() {
                 <Button variant="amber" size="lg" type="submit" className="md:col-span-2">Submit survey request</Button>
               </form>
             )}
+          </div>
+        </div>
+      </section>
+
+      <section id="careers" className="section-pad scroll-mt-28 bg-[#061622] text-white">
+        <div className="page-wrap">
+          <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr]">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[.16em] text-emerald-400">Career inquiry</span>
+              <h2 className="mt-4 text-3xl font-extrabold md:text-4xl">Current Field Openings</h2>
+              <p className="mt-5 max-w-xl leading-7 text-white/65">Surya Survey Solutions is accepting career enquiries for field-survey roles based on the current client-confirmed requirements.</p>
+
+              <div className="mt-8 space-y-4">
+                <article className="border border-white/15 bg-white/[.04] p-6">
+                  <div className="flex items-start gap-4"><span className="flex size-11 shrink-0 items-center justify-center bg-emerald-400/10"><BriefcaseBusiness className="size-5 text-emerald-400" /></span><div><h3 className="text-xl font-bold">Surveyor</h3><p className="mt-1 text-sm font-semibold text-emerald-300">Experience: 3–5 years</p></div></div>
+                  <ul className="mt-5 space-y-2 text-sm leading-6 text-white/70"><li>• Steel structures template setting</li><li>• Buildings and villas</li><li>• DGPS</li></ul>
+                </article>
+                <article className="border border-white/15 bg-white/[.04] p-6">
+                  <div className="flex items-start gap-4"><span className="flex size-11 shrink-0 items-center justify-center bg-emerald-400/10"><BriefcaseBusiness className="size-5 text-emerald-400" /></span><div><h3 className="text-xl font-bold">Surveyor Assistant</h3><p className="mt-1 text-sm font-semibold text-emerald-300">Experience: 0–1 year</p></div></div>
+                  <p className="mt-5 text-sm leading-6 text-white/70">Field-assistance role supporting survey execution, instrument setup and site activities.</p>
+                </article>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 text-foreground md:p-10">
+              <h2 className="text-2xl font-extrabold">Career Inquiry Form</h2>
+              <p className="mt-2 text-sm text-muted-foreground">Submit your details for the current Surveyor or Surveyor Assistant openings.</p>
+              {careerSent ? (
+                <div role="status" className="mt-8 border-l-4 border-emerald-500 bg-surface p-6">
+                  <h3 className="font-bold">Career inquiry prepared.</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">Your email application has been opened. Attach your resume/CV before sending it to suryamovva@gmail.com.</p>
+                  <Button className="mt-5" onClick={() => setCareerSent(false)}>Submit another inquiry</Button>
+                </div>
+              ) : (
+                <form className="mt-8 grid gap-5 md:grid-cols-2" onSubmit={(e) => {
+                  e.preventDefault();
+                  const form = e.currentTarget;
+                  const data = new FormData(form);
+                  const role = String(data.get("career-role") || "");
+                  const name = String(data.get("career-name") || "");
+                  const phone = String(data.get("career-phone") || "");
+                  const email = String(data.get("career-email") || "");
+                  const experience = String(data.get("career-experience") || "");
+                  const location = String(data.get("career-location") || "");
+                  const skills = String(data.get("career-skills") || "");
+                  const subject = encodeURIComponent(`Career Inquiry - ${role} - ${name}`);
+                  const body = encodeURIComponent(`Career Inquiry\n\nName: ${name}\nRole: ${role}\nPhone: ${phone}\nEmail: ${email}\nExperience: ${experience}\nCurrent Location: ${location}\nSkills / Project Experience: ${skills}\n\nPlease attach resume/CV before sending.`);
+                  window.location.href = `mailto:suryamovva@gmail.com?subject=${subject}&body=${body}`;
+                  setCareerSent(true);
+                }}>
+                  <Field id="career-name" label="Full Name *"><Input id="career-name" name="career-name" required /></Field>
+                  <Field id="career-phone" label="Phone Number *"><Input id="career-phone" name="career-phone" type="tel" required /></Field>
+                  <Field id="career-email" label="Email *"><Input id="career-email" name="career-email" type="email" required /></Field>
+                  <Field id="career-role" label="Applying For *"><select id="career-role" name="career-role" required defaultValue="" className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><option value="" disabled>Select role</option><option>Surveyor</option><option>Surveyor Assistant</option></select></Field>
+                  <Field id="career-experience" label="Experience *"><Input id="career-experience" name="career-experience" placeholder="e.g. 4 years" required /></Field>
+                  <Field id="career-location" label="Current Location *"><Input id="career-location" name="career-location" required /></Field>
+                  <div className="md:col-span-2"><Field id="career-skills" label="Skills / Project Experience *"><Textarea id="career-skills" name="career-skills" rows={5} placeholder="Steel structures template setting, buildings & villas, DGPS, field assistance, or other relevant experience" required /></Field></div>
+                  <div className="md:col-span-2 border border-border bg-surface p-4 text-xs leading-5 text-muted-foreground">After clicking Submit, your email application opens addressed to <strong>suryamovva@gmail.com</strong>. Attach your resume/CV before sending.</div>
+                  <Button variant="amber" size="lg" type="submit" className="md:col-span-2">Submit career inquiry</Button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </section>

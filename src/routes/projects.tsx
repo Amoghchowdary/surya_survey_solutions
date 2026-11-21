@@ -9,15 +9,15 @@ import { projects, type Project, type ProjectMedia } from "@/lib/site-data";
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Projects | Surya Survey Solutions" },
-      { name: "description", content: "Explore Surya Survey Solutions project fieldwork across Amaravati, Bheemaa, Greater Infra, Yashoda, Srihitha Infra at Mallampet, Advaita Properties and Mahitha Developers at Balaji Nagar." },
-      { property: "og:title", content: "Survey Projects | Surya Survey Solutions" },
+      { title: "Survey Projects | Surya Survey Solutions India" },
+      { name: "description", content: "Explore real Surya Survey Solutions civil and land survey projects covering Total Station, construction, infrastructure and site fieldwork across client projects in India." },
+      { property: "og:title", content: "Survey Survey Projects | Surya Survey Solutions India" },
       { property: "og:description", content: "Civil engineering survey projects with field measurement evidence, photographs and project videos from real sites." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/projects" },
+      { property: "og:url", content: "https://www.suryasurveysolutions.in/projects" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/projects" }],
+    links: [{ rel: "canonical", href: "https://www.suryasurveysolutions.in/projects" }],
   }),
   component: ProjectsPage,
 });

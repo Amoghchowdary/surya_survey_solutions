@@ -9,14 +9,14 @@ import { celebrationMedia, type CelebrationMedia } from "@/lib/gallery-data";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery | Surya Survey Solutions" },
-      { name: "description", content: "Celebrations, team moments, photographs and videos at Surya Survey Solutions." },
-      { property: "og:title", content: "Celebrations Gallery | Surya Survey Solutions" },
+      { title: "Surveying Gallery | Surya Survey Solutions" },
+      { name: "description", content: "View Surya Survey Solutions field, equipment, team and company gallery content supporting its civil engineering and land surveying work." },
+      { property: "og:title", content: "Celebrations Surveying Gallery | Surya Survey Solutions" },
       { property: "og:description", content: "All supplied celebration photographs and videos from Surya Survey Solutions." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/gallery" },
+      { property: "og:url", content: "https://www.suryasurveysolutions.in/gallery" },
     ],
-    links: [{ rel: "canonical", href: "/gallery" }],
+    links: [{ rel: "canonical", href: "https://www.suryasurveysolutions.in/gallery" }],
   }),
   component: GalleryPage,
 });

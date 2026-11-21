@@ -34,7 +34,8 @@ export function SiteHeader() {
         <nav aria-label="Primary navigation" className="site-desktop-nav">
           <Link to="/" activeOptions={{ exact: true }} className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Home</Link>
           <Link to="/about" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>About</Link>
-          <a href={`${base}#services`} className="nav-link">Services</a>
+          <a href={`${base}contact#careers`} className="nav-link">Careers</a>
+          <Link to="/services" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Services</Link>
           <Link to="/projects" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Projects</Link>
           <Link to="/gallery" className="nav-link" activeProps={{ className: "nav-link nav-link-active" }}>Gallery</Link>
           <a href={`${base}#why-us`} className="nav-link">Why Us</a>
@@ -63,7 +64,8 @@ export function SiteHeader() {
             {primaryNav.slice(0, 2).map(([label, to]) => (
               <Link key={to} to={to} onClick={() => setOpen(false)} className="site-mobile-link">{label}</Link>
             ))}
-            <a href={`${base}#services`} onClick={() => setOpen(false)} className="site-mobile-link">Services</a>
+            <a href={`${base}contact#careers`} onClick={() => setOpen(false)} className="site-mobile-link">Careers</a>
+            <Link to="/services" onClick={() => setOpen(false)} className="site-mobile-link">Services</Link>
             <Link to="/projects" onClick={() => setOpen(false)} className="site-mobile-link">Projects</Link>
             <Link to="/gallery" onClick={() => setOpen(false)} className="site-mobile-link">Gallery</Link>
             <a href={`${base}#why-us`} onClick={() => setOpen(false)} className="site-mobile-link">Why Us</a>
@@ -96,12 +98,14 @@ export function SiteFooter() {
         <div>
           <h2 className="mb-5 text-sm font-bold uppercase text-emerald-400">Quick Links</h2>
           <ul className="space-y-3 text-sm text-white/65">
-            {primaryNav.map(([label, to]) => <li key={to}><Link to={to} className="hover:text-white">{label}</Link></li>)}
+            {primaryNav.slice(0,2).map(([label, to]) => <li key={to}><Link to={to} className="hover:text-white">{label}</Link></li>)}
+            <li><a href={`${base}contact#careers`} className="hover:text-white">Careers</a></li>
+            {primaryNav.slice(2).map(([label, to]) => <li key={to}><Link to={to} className="hover:text-white">{label}</Link></li>)}
           </ul>
         </div>
         <div>
           <h2 className="mb-5 text-sm font-bold uppercase text-emerald-400">Surveying</h2>
-          <ul className="space-y-3 text-sm text-white/65"><li>Topographical Survey</li><li>Total Station Survey</li><li>DGPS / GNSS Survey</li><li>Construction Survey</li></ul>
+          <ul className="space-y-3 text-sm text-white/65"><li><Link to="/services" className="hover:text-white">Topographical Survey</Link></li><li><Link to="/services" className="hover:text-white">Total Station Survey</Link></li><li><Link to="/services" className="hover:text-white">DGPS / GNSS Survey</Link></li><li><Link to="/services" className="hover:text-white">Construction Survey</Link></li></ul>
         </div>
         <div>
           <h2 className="mb-5 text-sm font-bold uppercase text-emerald-400">Contact</h2>
